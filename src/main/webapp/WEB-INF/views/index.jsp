@@ -31,7 +31,7 @@
 				<strong>${user.name}</strong>님 환영합니다.
 				<a href="${root}/logout">로그아웃</a>
 			</div>
-			<a href="${root}/write">글쓰기</a><br>
+			<a href="${root}/mypage">마이페이지</a><br>
 			<%-- <a href="${root}/list?pg=1&key=&word=">글 목록</a><br> --%>
 			<a href="${root}/post">글 목록</a><br>
 			<a href="${root}/userList">회원목록</a>

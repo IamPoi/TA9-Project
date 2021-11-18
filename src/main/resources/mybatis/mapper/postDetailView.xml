@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.mapper.PostDetailMapper">
 	<!-- <select id="postView" parameterType="map" resultType="list"> -->
 	<select id="postDetailView" resultType="com.example.demo.model.PostDTO">
-		select * from post where post_num = #{post_num}
+		select * from post where post_num = #{no}
 	</select>
 	
 </mapper>

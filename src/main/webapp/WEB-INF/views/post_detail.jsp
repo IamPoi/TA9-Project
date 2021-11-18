@@ -20,7 +20,9 @@
 </head>
 <body>
 
-<h1>${post_detail.post_num}</h1>
+${post_detail.post_num}
+${post_detail.content}
+${post_detail.writer_id}
 
 
 
