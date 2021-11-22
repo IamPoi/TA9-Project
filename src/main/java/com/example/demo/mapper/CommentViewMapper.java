@@ -1,18 +1,16 @@
 package com.example.demo.mapper;
 
 import java.util.ArrayList;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.model.PostDTO;
+import com.example.demo.model.CommentDTO;
 
 @Mapper
 @Repository
-public interface PostMapper {
+public interface CommentViewMapper {
 	
-	public ArrayList<PostDTO> postView(Long dong_num);
+	public ArrayList<CommentDTO> commentView(int no);
+
 }

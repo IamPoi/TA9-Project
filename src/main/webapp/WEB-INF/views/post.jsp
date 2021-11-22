@@ -67,7 +67,7 @@ $(function() {
 <body>
 
 <div class="row">
-	<div class = "center">${dong_num} 게시판</div>
+	<div class = "center">${dong} 게시판</div>
 
 	<table id="example-table-1" width="80%" class="table table-bordered table-hover text-center">
 	<thead>

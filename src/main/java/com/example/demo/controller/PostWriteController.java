@@ -52,7 +52,7 @@ public class PostWriteController {
 		
 		System.out.println(dto.getDong_num());
 		
-		int dong_num = (int)dto.getDong_num();
+		Long dong_num = (Long)dto.getDong_num();
 		
 		
 		

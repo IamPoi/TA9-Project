@@ -16,7 +16,20 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-	
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#commentBtn").click(function() {
+	const url = new URL(window.location.href);
+		const no = url.searchParams;
+		no.get('no')
+		console.log(no.get('no'));
+		$("#commentForm").attr("action", "${root}/comment_write?no="+no.get('no')).submit();
+	})
+});
+
+</script>
+
 </head>
 <body>
 
@@ -30,22 +43,19 @@ ${post_detail.writer_id}
 		<td>댓글 내용</td>
 		<td>댓글 작성자</td>
 	</tr>
-	<tr>	
-		<td>1</td>
-		<td>???</td>
-		<td>pcy</td>
-	</tr>
-	<tr>	
-		<td>2</td>
-		<td>안녕하세요</td>
-		<td>qwe</td>
-	</tr>
+	<c:forEach items="${comment_list}" var = "comment">
+		<tr>
+			<td>${comment.comment_num}</td>
+			<td>${comment.content}</td>
+			<td>${comment.comment_writer}</td>
+		</tr>
+	</c:forEach>
 	
 </table>
 
-	<form action="" method="post">
-		<textarea rows="" cols="" name="comment"></textarea>
-		<input type="submit" value="등록">
+	<form action="comment_write" method="post" id = "commentForm">
+		<textarea rows="" cols="" name="content"></textarea>
+		<input id = "commentBtn" type="submit" value="등록">
 	</form>
 
 

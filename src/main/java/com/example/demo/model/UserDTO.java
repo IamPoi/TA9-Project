@@ -5,7 +5,7 @@ public class UserDTO {
 	private String id;
 	private String pw;
 	private String name;
-	private int dong_num;
+	private Long dong_num;
 	private String apt;
 	
 	public UserDTO(String id, String pw) {
@@ -17,7 +17,7 @@ public class UserDTO {
 	
 	
 
-	public UserDTO(String id, int dong_num) {
+	public UserDTO(String id, Long dong_num) {
 		super();
 		this.id = id;
 		this.dong_num = dong_num;
@@ -26,7 +26,7 @@ public class UserDTO {
 
 
 
-	public UserDTO(String id, String pw, String name, int dong_num, String apt) {
+	public UserDTO(String id, String pw, String name, Long dong_num, String apt) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -53,10 +53,10 @@ public class UserDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getDong_num() {
+	public Long getDong_num() {
 		return dong_num;
 	}
-	public void setDong_num(int dong_num) {
+	public void setDong_num(Long dong_num) {
 		this.dong_num = dong_num;
 	}
 	public String getApt() {

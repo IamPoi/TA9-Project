@@ -15,7 +15,7 @@ public class PostServiceImpl implements PostService{
 	private PostMapper postmapper;
 
 	@Override
-	public ArrayList<PostDTO> postView(int dong_num) throws Exception {
+	public ArrayList<PostDTO> postView(Long dong_num) throws Exception {
 		
 		System.out.println(postmapper.postView(dong_num));
 		
