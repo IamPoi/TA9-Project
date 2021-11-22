@@ -41,6 +41,8 @@ $(document).ready(function() {
 	});
 	
 });
+
+
 </script>
 
 </head>
@@ -73,6 +75,8 @@ $(document).ready(function() {
 					<button type="button" id="joinBtn" class="btn btn-warning">회원가입</button>
 				</div>
 			</form>
+
+
 		</div>
 	</div>
 

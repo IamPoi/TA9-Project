@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+<mapper namespace="com.example.demo.mapper.DongAptMapper">
+	<!-- <select id="postView" parameterType="map" resultType="list"> -->
+	<select id="dongApt" parameterType="com.example.demo.model.UserDTO" resultType="com.example.demo.model.DongAptDTO">
+		select l.dong, m.apt from member m, location l where m.dong_num = l.dong_num and m.dong_num = #{dong_num} and m.id = #{id};
+	</select>
+	
+</mapper>

@@ -59,7 +59,7 @@ $(function() {
 		
 	});		
 });
-	
+
 	
 </script>
 </head>
@@ -67,7 +67,7 @@ $(function() {
 <body>
 
 <div class="row">
-	<h1 class = "center">${dong_num} 게시판</h1>
+	<div class = "center">${dong_num} 게시판</div>
 
 	<table id="example-table-1" width="80%" class="table table-bordered table-hover text-center">
 	<thead>
@@ -82,18 +82,15 @@ $(function() {
 		<c:forEach items="${post_list}" var = "dong">
 			<tr>
 				<td>${dong.post_num}</td>
-				<td>${dong.content}</td>
+				<td>${dong.title}</td>
 				<td>${dong.writer_id}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
 	</table>
+	<a  href="post_write" id = "post-write" class = "right">글쓰기</a>
 </div>	
-		<div class="col-lg-12" id="ex1_Result1" ></div> 
-		<div class="col-lg-12" id="ex1_Result2" ></div> 
-	
-	
-	
+
 
 </body>
 </html>

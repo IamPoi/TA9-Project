@@ -3,23 +3,29 @@ package com.example.demo.model;
 public class PostDTO {
 	
 	private int post_num;
+	private String title;
 	private String content;
 	private String writer_id;
 	private int dong_num;
-	
-	public PostDTO(int post_num, String content, String writer_id, int dong_num) {
+	public PostDTO(int post_num, String title, String content, String writer_id, int dong_num) {
 		super();
 		this.post_num = post_num;
+		this.title = title;
 		this.content = content;
 		this.writer_id = writer_id;
 		this.dong_num = dong_num;
 	}
-	
 	public int getPost_num() {
 		return post_num;
 	}
 	public void setPost_num(int post_num) {
 		this.post_num = post_num;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getContent() {
 		return content;
@@ -39,12 +45,7 @@ public class PostDTO {
 	public void setDong_num(int dong_num) {
 		this.dong_num = dong_num;
 	}
-
-	@Override
-	public String toString() {
-		return "PostDTO [post_num=" + post_num + ", content=" + content + ", writer_id=" + writer_id + ", dong_num="
-				+ dong_num + "]";
-	}
+	
 	
 	
 

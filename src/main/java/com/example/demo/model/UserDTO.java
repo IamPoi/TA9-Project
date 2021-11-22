@@ -13,6 +13,18 @@ public class UserDTO {
 		this.id = id;
 		this.pw = pw;
 	}
+	
+	
+	
+
+	public UserDTO(String id, int dong_num) {
+		super();
+		this.id = id;
+		this.dong_num = dong_num;
+	}
+
+
+
 
 	public UserDTO(String id, String pw, String name, int dong_num, String apt) {
 		super();

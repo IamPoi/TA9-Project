@@ -8,7 +8,8 @@
 </head>
 <body>
 
-
+${aptInfo.dong_apt} <br>
+${aptInfo.min_price/100000000}¾ï ~ ${aptInfo.max_price/100000000}¾ï
 
 </body>
 </html>

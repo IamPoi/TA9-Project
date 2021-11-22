@@ -23,6 +23,30 @@
 ${post_detail.post_num}
 ${post_detail.content}
 ${post_detail.writer_id}
+<br><br><br><br>
+<table class="table table-bordered table-hover text-center">
+	<tr>	
+		<td>댓글 번호</td>
+		<td>댓글 내용</td>
+		<td>댓글 작성자</td>
+	</tr>
+	<tr>	
+		<td>1</td>
+		<td>???</td>
+		<td>pcy</td>
+	</tr>
+	<tr>	
+		<td>2</td>
+		<td>안녕하세요</td>
+		<td>qwe</td>
+	</tr>
+	
+</table>
+
+	<form action="" method="post">
+		<textarea rows="" cols="" name="comment"></textarea>
+		<input type="submit" value="등록">
+	</form>
 
 
 
