@@ -32,6 +32,7 @@ $(document).ready(function() {
 
 </head>
 <body>
+<h1>${post_detail.title}</h1>
 
 ${post_detail.post_num}
 ${post_detail.content}

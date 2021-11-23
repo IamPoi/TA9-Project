@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<!-- <select id="myPostView" parameterType="map" resultType="list"> -->
+<mapper namespace="com.example.demo.mapper.MyCommentMapper">
+	<select id="myCommentView" resultType="com.example.demo.model.CommentDTO">
+		select * from comment where COMMENT_WRITER = #{userId}
+	</select>
+	
+</mapper>

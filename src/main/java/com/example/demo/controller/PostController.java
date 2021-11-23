@@ -37,11 +37,12 @@ public class PostController {
 		
 		UserDTO dto =  (UserDTO)session.getAttribute("user");
 		
+		
 		System.out.println(dto.getDong_num());
 		
 		Long dong_num = (Long)dto.getDong_num();
 		
-		
+		System.out.println("dto = " + dto);
 		
 		try {
 			

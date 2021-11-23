@@ -41,7 +41,7 @@ server:
       charset: UTF-8
       enabled: true
       force: true
-      
+
 # mybatis 매핑
 mybatis:
   type-aliases-package: com.example.demo.model

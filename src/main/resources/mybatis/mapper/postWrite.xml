@@ -7,7 +7,7 @@
 	<insert id="postWrite" parameterType="map">
 		insert into post
 		(title,content,writer,dong_num) 
-		values(#{content},#{content},#{writer},#{dong_num})
+		values(#{title},#{content},#{writer},#{dong_num})
 	</insert>
 	
 </mapper>

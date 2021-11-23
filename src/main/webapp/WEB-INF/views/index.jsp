@@ -17,6 +17,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	
+<script type="text/javascript">
+
+</script>
+	
 </head>
 <body>
 	<div align="center">

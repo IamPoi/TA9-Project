@@ -40,6 +40,18 @@ public class PostWriteController {
 		System.out.println("게시글 등록 시도");
 		map.put("dong_num", dto.getDong_num());
 		map.put("writer", dto.getId());
+		String content = (String)map.get("content");
+		
+		System.out.println(content);
+		
+		content = content.replace("<p>", "");
+		
+		content = content.replace("</p>", "");
+		
+		System.out.println(content);
+		
+		map.put("content",content);
+		
 		try {
 			pws.postWrite(map);
 			System.out.println("등록 성공");
@@ -53,7 +65,6 @@ public class PostWriteController {
 		System.out.println(dto.getDong_num());
 		
 		Long dong_num = (Long)dto.getDong_num();
-		
 		
 		
 		try {

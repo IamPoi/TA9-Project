@@ -1,3 +1,4 @@
+<%@page import="com.example.demo.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,25 +17,11 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	
+<% UserDTO dto = (UserDTO)session.getAttribute("user");%>
 
 <script type="text/javascript">
 
-	/* window.onload = function() {
-			var a = document.querySelectorAll("tr")
-			$("")
-			a.forEach(function(el) {
-				el.addEventListener('click', (el) => {
-					console.log(el.srcElement.parentNode.childNodes[1].innerText)
-				})	
-			}) */
-/* 			function all(i) {
-				
-			}
-			all = (i) => {
-				
-			} */
-			
-			
 $(function() {
 	$("#example-table-1 tbody").on("click","tr",function(){
 		var str = ""
@@ -55,16 +42,44 @@ $(function() {
 		str +=	"No." + no;
 		console.log(no)
 		
-		location.replace('post_detail?no='+no);
+		location.href = 'post_detail?no='+no;
 		
-	});		
+	});
 });
+
+window.onload = function(){
+	
+		var str = ""
+		var tdArr = new Array();	// 배열 선언
+		
+		var writer = document.querySelectorAll(".writer");
+		console.log(...writer)
+		tdArr = [...writer]
+		console.log(tdArr.toString());
+		
+		var id = <%=dto.getId()%>;
+		
+		console.log(id);
+		
+		/* var userId2 = sessionStorage.getItem("user");
+		console.log(userId2) */
+		
+		
+		
+};
+
 
 	
 </script>
 </head>
 
 <body>
+
+
+
+<h1><%=dto.getId()%></h1>
+
+
 
 <div class="row">
 	<div class = "center">${dong} 게시판</div>
@@ -73,7 +88,7 @@ $(function() {
 	<thead>
 		<tr>
 			<th>No.</th>
-			<th>Content</th>
+			<th>Title</th>
 			<th>Writer</th>
 		</tr>
 	</thead>
@@ -83,7 +98,13 @@ $(function() {
 			<tr>
 				<td>${dong.post_num}</td>
 				<td>${dong.title}</td>
-				<td>${dong.writer_id}</td>
+				<%if (dto.getId().equals("%>${dong.writer_id}<%")) { %>
+				<td class = "writer" id=${dong.writer_id}>${dong.writer_id}<button>수정</button><button>삭제</button></td>
+				<%} else{%>
+				<td class = "writer" id=${dong.writer_id}>${dong.writer_id}</button></td>
+				<%} %>
+				
+				
 			</tr>
 		</c:forEach>
 	</tbody>

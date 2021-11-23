@@ -5,7 +5,7 @@
 	<!-- <select id="postView" parameterType="map" resultType="list"> -->
 <mapper namespace="com.example.demo.mapper.CommentViewMapper">
 	<select id="commentView" resultType="com.example.demo.model.CommentDTO">
-		select * from comment where post_num = #{no}
+		select * from comment where post_num = #{no} order by comment_num desc
 	</select>
 	
 </mapper>

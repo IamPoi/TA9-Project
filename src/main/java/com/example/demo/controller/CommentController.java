@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,18 +33,19 @@ public class CommentController {
 	@PostMapping("/comment_write")
 	public String commentView(@RequestParam Map<String, Object> map,Model model,HttpSession session) {
 		
-		System.out.println("게시글 등록 시도");
+		System.out.println("댓글 등록 시도");
 		
 		
 		UserDTO dto = (UserDTO)session.getAttribute("user");
 		String comment_writer = dto.getName();
 		
 		map.put("comment_writer", comment_writer);
-		map.put("comment_num", 3);
 		
 		System.out.println(map.toString());
-	
 		
+		String no = (String)map.get("no");
+		
+		System.out.println(no);
 		
 		try {
 			cws.commentWrite(map);
@@ -51,9 +53,8 @@ public class CommentController {
 			e.printStackTrace();
 		}
 		
+		return "redirect:/post_detail?no="+no;
 		
-		
-		return "post_detail";
 	}
 	
 }
