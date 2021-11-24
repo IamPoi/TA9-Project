@@ -22,7 +22,8 @@
 
 <script type="text/javascript">
 
-$(function() {
+// 테이블 클릭 이벤트 (수정,삭제로 인한 보류)
+/* $(function() {
 	$("#example-table-1 tbody").on("click","tr",function(){
 		var str = ""
 		var tdArr = new Array();	// 배열 선언
@@ -45,31 +46,42 @@ $(function() {
 		location.href = 'post_detail?no='+no;
 		
 	});
+}); */
+
+
+$(function(){
+	$(".updateBtn").on("click",function(){
+		
+		var str = ""
+		var tdArr = new Array();
+		var btn = $(this);
+		var tr = btn.parent().parent();
+		var td = tr.children();
+		
+		var no = td.eq(0).text();
+		
+		location.href ='post_update?no='+no;
+		
+	});
 });
 
-window.onload = function(){
-	
+$(function(){
+	$(".deleteBtn").on("click",function(){
+		
 		var str = ""
-		var tdArr = new Array();	// 배열 선언
+		var tdArr = new Array();
+		var btn = $(this);
+		var tr = btn.parent().parent();
+		var td = tr.children();
 		
-		var writer = document.querySelectorAll(".writer");
-		console.log(...writer)
-		tdArr = [...writer]
-		console.log(tdArr.toString());
+		var no = td.eq(0).text();
 		
-		var id = <%=dto.getId()%>;
+		location.href ='post_delete?no='+no;
 		
-		console.log(id);
-		
-		/* var userId2 = sessionStorage.getItem("user");
-		console.log(userId2) */
-		
-		
-		
-};
+	});
+});
 
 
-	
 </script>
 </head>
 
@@ -77,14 +89,14 @@ window.onload = function(){
 
 
 
-<h1><%=dto.getId()%></h1>
 
 
 
-<div class="row">
-	<div class = "center">${dong} 게시판</div>
+<div class="row" style = "width: 80%; padding-left: 15%">
+	<h1><%=dto.getId()%></h1>
+	<div class = "center"><%=dto.getDong_num() %>동 게시판</div>
 
-	<table id="example-table-1" width="80%" class="table table-bordered table-hover text-center">
+	<table id="example-table-1" style = "width : 100%;" class="table table-bordered table-hover text-center">
 	<thead>
 		<tr>
 			<th>No.</th>
@@ -94,16 +106,20 @@ window.onload = function(){
 	</thead>
 	
 	<tbody>	
-		<c:forEach items="${post_list}" var = "dong">
+		<c:forEach items="${post_list}" var = "post">
 			<tr>
-				<td>${dong.post_num}</td>
-				<td>${dong.title}</td>
-				<%if (dto.getId().equals("%>${dong.writer_id}<%")) { %>
-				<td class = "writer" id=${dong.writer_id}>${dong.writer_id}<button>수정</button><button>삭제</button></td>
-				<%} else{%>
-				<td class = "writer" id=${dong.writer_id}>${dong.writer_id}</button></td>
-				<%} %>
+				<td>${post.post_num}</td>
+				<td><a href="post_detail?no=${post.post_num}">${post.title}</a></td>
+				<c:set var = "id" value="<%=dto.getId()%>"></c:set>
+				<c:choose>
+					<c:when test="${post.writer_id == id}">
+						<td>${post.writer_id}<button class = "updateBtn">수정</button><button class = "deleteBtn">삭제</button></td>
+					</c:when>
+					<c:otherwise>
+						<td>${post.writer_id}<button style="visibility: hidden;">수정</button><button style="visibility: hidden;">수정</button></td>
+					</c:otherwise>
 				
+				</c:choose>
 				
 			</tr>
 		</c:forEach>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+	
+<mapper namespace="com.example.demo.mapper.PostDeleteMapper">
 	<!-- <select id="postView" parameterType="map" resultType="list"> -->
-<mapper namespace="com.example.demo.mapper.PostMapper">
-	<select id="postView" resultType="com.example.demo.model.PostDTO">
-		select * from post where dong_num = #{dong_num} order by post_num desc
-	</select>
+	<delete id="postDelete">
+		delete from post where post_num = #{no}
+	</delete>
 	
 </mapper>

@@ -25,9 +25,10 @@ $(document).ready(function() {
 </script>
 
 </head>
-<body>
+<body style = "width : 35%;">
+<!-- <body> -->
 
-	<div class="container" align="center">
+	<div class="container" align="center" style = "width : 100%;">
 		<div class="col-lg-6" align="center">
 			<form id="loginform" method="post" action="">
 				<div class="form-group" align="left">

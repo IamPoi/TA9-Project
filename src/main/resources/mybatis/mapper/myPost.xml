@@ -5,7 +5,7 @@
 	<!-- <select id="myPostView" parameterType="map" resultType="list"> -->
 <mapper namespace="com.example.demo.mapper.MyPostMapper">
 	<select id="myPostView" resultType="com.example.demo.model.PostDTO">
-		select * from post where writer = #{userId}
+		select * from post where writer = #{userId} order by post_num desc limit 5
 	</select>
 	
 </mapper>

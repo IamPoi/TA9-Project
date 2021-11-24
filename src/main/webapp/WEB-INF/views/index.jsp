@@ -23,11 +23,12 @@
 	
 </head>
 <body>
-	<div align="center">
-		<h1>로그인</h1>
+	<div align="right">
 		<c:if test="${user == null}">
 			<h3>${msg}</h3>
-			<%@ include file = "/WEB-INF/views/login.jsp" %>
+			<div align="right">
+				<%@ include file = "/WEB-INF/views/login.jsp" %>
+			</div>
 		</c:if>
 		
 		<c:if test="${user != null}">

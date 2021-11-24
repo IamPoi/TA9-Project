@@ -1,3 +1,4 @@
+<%@page import="com.example.demo.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -22,16 +23,37 @@ $(document).ready(function() {
 	$("#commentBtn").click(function() {
 	const url = new URL(window.location.href);
 		const no = url.searchParams;
-		no.get('no')
-		console.log(no.get('no'));
 		$("#commentForm").attr("action", "${root}/comment_write?no="+no.get('no')).submit();
 	})
+});
+
+$(function(){
+	$(".deleteBtn").on("click",function(){
+		
+		var str = ""
+		var tdArr = new Array();
+		var btn = $(this);
+		var tr = btn.parent().parent();
+		var td = tr.children();
+		
+		var comment_num = td.eq(0).text();
+		
+		const url = new URL(window.location.href);
+		const urlPa = url.searchParams;
+		var no =urlPa.get('no')
+		
+		location.href = 'comment_delete?no='+no+'&comment_num='+comment_num;
+		
+	});
 });
 
 </script>
 
 </head>
 <body>
+
+<%UserDTO dto = (UserDTO)session.getAttribute("user"); %>
+<c:set var ="id" value = "<%=dto.getId()%>"></c:set>
 <h1>${post_detail.title}</h1>
 
 ${post_detail.post_num}
@@ -48,7 +70,14 @@ ${post_detail.writer_id}
 		<tr>
 			<td>${comment.comment_num}</td>
 			<td>${comment.content}</td>
-			<td>${comment.comment_writer}</td>
+			<c:choose>
+				<c:when test="${comment.comment_writer == id}">   
+					<td>${comment.comment_writer}<button class = "deleteBtn">삭제</button></td>
+				</c:when>
+				<c:otherwise>
+					<td>${comment.comment_writer}<button style="visibility: hidden;" class = "delteBtn">삭제</button></td>
+				</c:otherwise>
+			</c:choose>
 		</tr>
 	</c:forEach>
 	

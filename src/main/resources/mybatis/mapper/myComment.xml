@@ -5,7 +5,7 @@
 	<!-- <select id="myPostView" parameterType="map" resultType="list"> -->
 <mapper namespace="com.example.demo.mapper.MyCommentMapper">
 	<select id="myCommentView" resultType="com.example.demo.model.CommentDTO">
-		select * from comment where COMMENT_WRITER = #{userId}
+		select * from comment where COMMENT_WRITER = #{userId} order by comment_num desc limit 5
 	</select>
 	
 </mapper>

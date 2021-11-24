@@ -19,7 +19,7 @@ import com.example.demo.service.PostService;
 import com.example.demo.service.PostWriteService;
 
 @Controller
-@RequestMapping
+@RequestMapping("/")
 public class PostWriteController {
 	
 	@Autowired

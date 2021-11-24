@@ -30,12 +30,13 @@
 <body> 
 <br>
 <div align="center"  style="width: 70%; padding-left: 15%;">
-	<form action="${root}/post_enrollment" method="post">
-		제목 <input type="text" name="title" style=""><br><br>
-
-		<textarea style = "height:500px" name="content" id="content_textarea"></textarea>
+	<form action="${root}/post_update_try?no=${post.post_num}" method="post">
+		${post.post_num}
+		제목 <input type="text" name="title" value="${post.title}"><br><br>
+		<textarea style = "height:500px" name="content" id="content_textarea">${post.content}</textarea>
 		<button id = "testButton">dd</button>
-		<input type="submit" value="글 등록" id="submit-btn">
+		<input type="submit" value="글 수정" id="submit-btn">
+		
 	</form>
 </div>
 	<script type="text/javascript">
