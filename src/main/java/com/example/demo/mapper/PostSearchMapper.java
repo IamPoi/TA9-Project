@@ -12,6 +12,6 @@ import com.example.demo.model.PostDTO;
 @Repository
 public interface PostSearchMapper {
 	
-	public ArrayList<PostDTO> postSearch(Map<String, Object> map);
+	public ArrayList<PostDTO> postSearch(PostDTO dto);
 
 }

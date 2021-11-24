@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +15,9 @@ public class PostSearchServiceImpl implements PostSearchService{
 	private PostSearchMapper postSearchMapper;
 
 	@Override
-	public ArrayList<PostDTO> postSearch(Map<String, Object> map) throws Exception {
+	public ArrayList<PostDTO> postSearch(PostDTO dto) throws Exception {
 		
-		return postSearchMapper.postSearch(map);
+		return postSearchMapper.postSearch(dto);
 	}
 	
 	

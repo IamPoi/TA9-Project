@@ -10,9 +10,11 @@ spring:
 # prac
 #    url: jdbc:mysql://localhost:3306/prac?serverTimezone=Asia/Seoul
     url: jdbc:mysql://localhost/prac?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:log4jdbc:mysql://localhost/prac?useUnicode=true&characterEncoding=utf-8
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     username: root
     password: system
-    driver-class-name: com.mysql.cj.jdbc.Driver
     
   mvc:
     view:

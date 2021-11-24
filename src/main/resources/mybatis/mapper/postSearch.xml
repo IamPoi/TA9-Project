@@ -4,10 +4,18 @@
 
 	<!-- <select id="postView" parameterType="map" resultType="list"> -->
 <mapper namespace="com.example.demo.mapper.PostSearchMapper">
-	<select id="postSearch" resultType="com.example.demo.model.PostDTO" parameterType="map">
+	<select id="postSearch" resultType="com.example.demo.model.PostDTO" parameterType="com.example.demo.model.PostDTO">
 		select * 
-		from select * from post where dong_num = #{dong_num} want
-		where want.title like '%#{search}%' or want.content like '%#{search}%'
+		from 
+			(select * 
+			from 
+				post 
+			where 
+				dong_num = #{dong_num} ) as want
+		where
+		  want.title like concat('%',#{content},'%') 
+		  	or 
+	  	  want.content like concat('%',#{content},'%')
 	</select>
 	
 </mapper>

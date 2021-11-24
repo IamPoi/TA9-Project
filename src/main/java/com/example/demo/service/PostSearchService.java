@@ -7,6 +7,6 @@ import com.example.demo.model.PostDTO;
 
 public interface PostSearchService {
 	
-	public ArrayList<PostDTO> postSearch(Map<String,Object> map) throws Exception;
+	public ArrayList<PostDTO> postSearch(PostDTO dto) throws Exception;
 
 }

@@ -31,27 +31,27 @@ public class PostSearchController {
 			
 			Long dong_num = user.getDong_num();	
 			
-			System.out.println(map.toString());
-			
-			map.put("dong_num", dong_num);
+			PostDTO postDto = new PostDTO(0, null, null, null, dong_num);
 			
 			String search = (String)map.get("search");
 			
-			map.put("search", search);
+			postDto.setContent(search);
 			
-			System.out.println(map.toString());
+			ArrayList<PostDTO> post =(ArrayList<PostDTO>)pss.postSearch(postDto);
 			
-			ArrayList<PostDTO> post =(ArrayList<PostDTO>)pss.postSearch(map);
+			System.out.println(post);
 			
 			model.addAttribute("post_list",post);
+			
+			System.out.println(post.get(0).getContent());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "???";
+//		return "???";
 		
-//		return "redirect:/post";
+		return "redirect:/post";
 	}
 	
 
