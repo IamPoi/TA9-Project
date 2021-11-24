@@ -95,7 +95,12 @@ $(function(){
 <div class="row" style = "width: 80%; padding-left: 15%">
 	<h1><%=dto.getId()%></h1>
 	<div class = "center"><%=dto.getDong_num() %>동 게시판</div>
-
+	
+		<form action="post_search" method="get" >
+			<input type="text" placeholder="검색 할 내용" name = "search">
+			<input type="submit" value="검색">
+		</form>
+	
 	<table id="example-table-1" style = "width : 100%;" class="table table-bordered table-hover text-center">
 	<thead>
 		<tr>
