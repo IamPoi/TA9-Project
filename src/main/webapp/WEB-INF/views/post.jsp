@@ -50,6 +50,7 @@
 }); */
 
 
+
 $(function(){
 	$(".updateBtn").on("click",function(){
 		
@@ -80,6 +81,13 @@ $(function(){
 		location.href ='post_delete?no='+no;
 		
 	});
+});
+
+
+$(function() {
+
+    console.log("ㅎㅇㅎㅇㅎ");
+
 });
 
 

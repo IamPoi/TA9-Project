@@ -20,6 +20,18 @@
 	</properties>
 	<dependencies>
 	
+		<!-- Jsoup -->
+	
+		<dependency>
+	
+			<groupId>org.jsoup</groupId>
+	
+			<artifactId>jsoup</artifactId>
+	
+			<version>1.10.2</version>
+	
+	
+		</dependency>
 
 		<!-- 추가 라이브러리 -->
 		<!-- 시큐리티 태그 라이브러리 -->

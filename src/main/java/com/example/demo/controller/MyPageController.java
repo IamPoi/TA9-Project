@@ -40,6 +40,11 @@ public class MyPageController {
 	
 	@GetMapping("mypage")
 	public String Mypage(HttpSession session,Model model,@RequestParam Map<String, Object> map) {
+		
+		if(session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
+		
 		System.out.println("mypage 접근");
 		
 		UserDTO dto = (UserDTO)session.getAttribute("user");

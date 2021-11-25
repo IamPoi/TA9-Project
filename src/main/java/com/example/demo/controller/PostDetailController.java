@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +33,11 @@ public class PostDetailController {
 	}
 	
 	@GetMapping("post_detail")
-	public String postDetailView(@RequestParam int no, Model model) {
+	public String postDetailView(@RequestParam int no, Model model,HttpSession session) {
 		
+		if(session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
 		
 		System.out.println("게시판 자세히 보기");
 		

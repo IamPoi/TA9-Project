@@ -115,15 +115,15 @@ a {
 const toggleBtn = document.querySelector('.navbar__toggleBtn');
 const menu = document.querySelector('.navbar__menu');
 const sns = document.querySelector('.navbar__sns');
-
+/* 
 toggleBtn.addEventListener('click', () => {
         menu.classList.toggle('active');
         sns.classList.toggle('active');
 });
-
+ */
 function login(){
 	
-	swal("로그인 해주세요");
+	alert("로그인 해주세요");
 	
 }
 
@@ -145,7 +145,7 @@ function login(){
 			<li><a href="${root}/login" onclick="login()">게시판</a></li>
 			<li><a href="${root}/login" onclick="login()">마이페이지</a></li>
 			<li><a href="#">랭킹??</a></li>
-			<li><a href="${root}/login">회원가입</a></li>			
+			<li><a href="${root}/join_page">회원가입</a></li>			
 			<li><a href="${root}/login">로그인</a></li>
 			
 			<%} else {%>
@@ -157,9 +157,9 @@ function login(){
 			<%} %>
 
 			<c:if test="${user != null}">
-				<div style="color: white; padding-top: 0%">
+				<li style="color: white; padding-top: 1%">
 					<strong>${user.name}</strong>님 환영합니다.<br>
-				</div>
+				</li>
 				<%-- <a href="${root}/mypage">마이페이지</a>
 				<br>
 				<a href="${root}/post">게시판</a>
@@ -167,7 +167,7 @@ function login(){
 				<a href="${root}/logout">로그아웃</a> --%>
 			</c:if>
 			<c:if test="${user == null}">
-				<div style="color: white; padding-top: 2%">해주세요.</div>
+				<li style="color: white; padding-top: 1%">해주세요.</li>
 			</c:if>
 		</ul>
 		<!-- <ul class="navbar__sns">

@@ -24,14 +24,13 @@ public class PostController {
 	@Autowired
 	private PostService ps;
 
-	@PostMapping("/post")
-	public void postViewP() {
-		System.out.println("????");
-	}
 	
 	@GetMapping("/post")
 	public String postView(Model model, HttpSession session) {
 		
+		if(session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
 		
 		System.out.println("게시판 목록");
 		
