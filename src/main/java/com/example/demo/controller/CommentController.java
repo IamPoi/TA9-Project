@@ -37,7 +37,7 @@ public class CommentController {
 		
 		
 		UserDTO dto = (UserDTO)session.getAttribute("user");
-		String comment_writer = dto.getName();
+		String comment_writer = dto.getId();
 		
 		map.put("comment_writer", comment_writer);
 		
