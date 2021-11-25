@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지금 우리 동네는</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -23,23 +24,10 @@
 	
 </head>
 <body>
-	<div align="right">
-		<c:if test="${user == null}">
-			<h3>${msg}</h3>
-			<div align="right">
-				<%@ include file = "/WEB-INF/views/login.jsp" %>
-			</div>
-		</c:if>
-		
-		<c:if test="${user != null}">
-			<div>
-				<strong>${user.name}</strong>님 환영합니다.
-				<a href="${root}/logout">로그아웃</a>
-			</div>
-			<a href="${root}/mypage">마이페이지</a><br>
-			<a href="${root}/post">게시판</a><br>
-			<%-- <a href="${root}/userList">회원목록</a> --%>
-		</c:if>
-	</div>
+
+<%@ include file = "/WEB-INF/views/menu.jsp" %>
+
+	<h1>시작 페이지에 뭐를 추가를 해야 추가를 잘 했다고 소문이 날까요???</h1>
+	
 </body>
 </html>

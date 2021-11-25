@@ -6,7 +6,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지금 우리 동네는</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#loginBtn").click(function() {
@@ -25,8 +37,8 @@ $(document).ready(function() {
 </script>
 
 </head>
-<body style = "width : 35%;">
-<!-- <body> -->
+<body>
+<%@ include file = "/WEB-INF/views/menu.jsp" %>
 
 	<div class="container" align="center" style = "width : 100%;">
 		<div class="col-lg-6" align="center">
@@ -40,9 +52,6 @@ $(document).ready(function() {
 					<input type="password" class="form-control" id="userpw" name="userpw" placeholder="" onkeydown="javascript:if(event.keyCode == 13) {login();}">
 				</div>
 				<div class="form-group form-check" align="right">
-					<label class="form-check-lable">
-						<input class="form-check-input" type="checkbox" id="idsave" name="idsave"> 아이디저장
-					</label>
 				</div>
 				<div class="form-group" align="center">
 					<button type="button" id="loginBtn" class="btn btn-warning">로그인</button>

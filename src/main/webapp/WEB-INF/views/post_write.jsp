@@ -25,9 +25,12 @@
 
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지금 우리 동네는</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 </head>
 <body> 
+
+<%@ include file = "/WEB-INF/views/menu.jsp" %>
 <br>
 <div align="center"  style="width: 70%; padding-left: 15%;">
 	<form action="${root}/post_enrollment" method="post">

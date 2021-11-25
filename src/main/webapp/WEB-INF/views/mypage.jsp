@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지금 우리 동네는</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -49,9 +50,15 @@ $(function() {
 </head>
 <body>
 
+
+
+<%@ include file = "/WEB-INF/views/menu.jsp" %>
+
 <%UserDTO dto = (UserDTO)session.getAttribute("user"); %>
 
+<div style = "padding-left: 10%; width: 90%;">
 <h1><%=dto.getName() %>의 마이 페이지</h1>
+
 
 <%=dto.getApt() %> <br>
 ${aptInfo.min_price/100000000}억 ~ ${aptInfo.max_price/100000000}억
@@ -96,6 +103,6 @@ ${aptInfo.min_price/100000000}억 ~ ${aptInfo.max_price/100000000}억
 </table>
 
 
-
+</div>
 </body>
 </html>

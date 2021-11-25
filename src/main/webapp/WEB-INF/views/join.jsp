@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지금 우리 동네는</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -47,6 +48,7 @@ $(document).ready(function() {
 
 </head>
 <body>
+<%@ include file = "/WEB-INF/views/menu.jsp" %>
 
 <div class="container" align="center">
 		<div class="col-lg-6" align="center">

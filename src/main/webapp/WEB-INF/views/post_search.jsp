@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지금 우리 동네는</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -88,7 +89,7 @@ $(function(){
 <body>
 
 
-
+<%@ include file = "/WEB-INF/views/menu.jsp" %>
 
 
 
@@ -114,7 +115,7 @@ $(function(){
 		<c:forEach items="${post_list}" var = "post">
 			<tr>
 				<td>${post.post_num}</td>
-				<td><a href="post_detail?no=${post.post_num}">${post.title}</a></td>
+				<td><a style="color:black;" href="post_detail?no=${post.post_num}">${post.title}</a></td>
 				<c:set var = "id" value="<%=dto.getId()%>"></c:set>
 				<c:choose>
 					<c:when test="${post.writer_id == id}">

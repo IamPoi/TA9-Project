@@ -26,6 +26,8 @@ public class PostSearchController {
 	@GetMapping("post_search")
 	public String postSearch(@RequestParam Map<String, Object> map,Model model, HttpSession session) {
 		
+			System.out.println("????");
+		
 		try {
 			UserDTO user = (UserDTO)session.getAttribute("user");
 			
@@ -51,7 +53,7 @@ public class PostSearchController {
 		
 //		return "???";
 		
-		return "redirect:/post";
+		return "post_search";
 	}
 	
 
