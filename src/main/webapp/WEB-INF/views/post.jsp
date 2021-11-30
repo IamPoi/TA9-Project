@@ -67,6 +67,7 @@ $(function(){
 	});
 });
 
+
 $(function(){
 	$(".deleteBtn").on("click",function(){
 		
@@ -84,12 +85,6 @@ $(function(){
 });
 
 
-$(function() {
-
-    console.log("ㅎㅇㅎㅇㅎ");
-
-});
-
 
 </script>
 </head>
@@ -102,7 +97,7 @@ $(function() {
 
 
 <div class="row" style = "padding-left: 10%; width: 90%;">
-	<div class = "center"><%=dto.getDong_num() %>동 게시판</div>
+	<div class = "center">${user_location.dong}동 게시판</div>
 	
 		<form action="post_search" method="get" >
 			<input type="text" placeholder="검색 할 내용" name = "search">
@@ -138,7 +133,7 @@ $(function() {
 		</c:forEach>
 	</tbody>
 	</table>
-	<a  href="post_write" id = "post-write" class = "right">글쓰기</a>
+	<a  href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
 </div>	
 
 

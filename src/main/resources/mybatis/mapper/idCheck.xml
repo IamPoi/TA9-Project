@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<!-- <select id="myPostView" parameterType="map" resultType="list"> -->
+<mapper namespace="com.example.demo.mapper.IdCheckMapper">
+	<select id="idCheck" resultType="int" parameterType="String">
+		select count(*) from member where id = #{id}
+	</select>
+</mapper>

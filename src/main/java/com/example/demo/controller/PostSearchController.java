@@ -51,8 +51,6 @@ public class PostSearchController {
 			e.printStackTrace();
 		}
 		
-//		return "???";
-		
 		return "post_search";
 	}
 	

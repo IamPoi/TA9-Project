@@ -8,8 +8,8 @@ import com.example.demo.model.DongAptDTO;
 import com.example.demo.model.UserDTO;
 
 @Service
-public class DongAptServiceImpl implements DongAptService{
-	
+public class DongAptServiceImpl implements DongAptService {
+
 	@Autowired
 	private DongAptMapper dongAptMapper;
 
@@ -18,8 +18,5 @@ public class DongAptServiceImpl implements DongAptService{
 		System.out.println("동_아파트 검색하기");
 		return dongAptMapper.dongApt(dto);
 	}
-	
-	
-	
 
 }

@@ -142,11 +142,11 @@ function login(){
 
 			<%if (session.getAttribute("user") == null) { %>
 			<li><a href="/">홈</a></li>
-			<li><a href="${root}/login" onclick="login()">게시판</a></li>
-			<li><a href="${root}/login" onclick="login()">마이페이지</a></li>
+			<li><a href="${root}/login_page" onclick="login()">게시판</a></li>
+			<li><a href="${root}/login_page" onclick="login()">마이페이지</a></li>
 			<li><a href="#">랭킹??</a></li>
 			<li><a href="${root}/join_page">회원가입</a></li>			
-			<li><a href="${root}/login">로그인</a></li>
+			<li><a href="${root}/login_page">로그인</a></li>
 			
 			<%} else {%>
 			<li><a href="/">홈</a></li>
@@ -167,7 +167,6 @@ function login(){
 				<a href="${root}/logout">로그아웃</a> --%>
 			</c:if>
 			<c:if test="${user == null}">
-				<li style="color: white; padding-top: 1%">해주세요.</li>
 			</c:if>
 		</ul>
 		<!-- <ul class="navbar__sns">

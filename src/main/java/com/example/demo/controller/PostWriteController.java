@@ -80,7 +80,7 @@ public class PostWriteController {
 			System.out.println("오류");
 		}
 		
-		return "post";
+		return "redirect:/post";
 	}
 
 }

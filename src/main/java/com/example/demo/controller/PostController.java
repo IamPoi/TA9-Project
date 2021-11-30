@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.model.LocationDTO;
 import com.example.demo.model.PostDTO;
 import com.example.demo.model.UserDTO;
 import com.example.demo.service.PostService;
+import com.example.demo.service.UserLocationService;
 
 
 
@@ -24,6 +25,8 @@ public class PostController {
 	@Autowired
 	private PostService ps;
 
+	@Autowired
+	private UserLocationService uls;
 	
 	@GetMapping("/post")
 	public String postView(Model model, HttpSession session) {
@@ -31,6 +34,9 @@ public class PostController {
 		if(session.getAttribute("user") == null) {
 			return "redirect:/";
 		}
+		
+		
+		
 		
 		System.out.println("게시판 목록");
 		
@@ -41,6 +47,7 @@ public class PostController {
 		
 		Long dong_num = (Long)dto.getDong_num();
 		
+		
 		System.out.println("dto = " + dto);
 		
 		try {
@@ -50,6 +57,10 @@ public class PostController {
 			model.addAttribute("post_list",post_list);
 			
 			model.addAttribute("dong_num",dong_num);
+			
+			LocationDTO locationDTO = uls.userLocation(dong_num);
+			
+			model.addAttribute("user_location",locationDTO);
 			
 			
 		} catch (Exception e) {

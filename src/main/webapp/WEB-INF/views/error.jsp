@@ -23,51 +23,11 @@
 
 
 </script>
-	
 </head>
 <body>
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
+<h1>아이디 또는 비밀번호를 확인하고 다시 로그인 해주세요.</h1>
 
-	
-	<br>
-	<table style = "align-content: center;">
-		<thead>
-			<tr>
-				<td><strong>No.</strong></td>
-				<td><strong>실시간 뉴스 헤드라인</strong></td>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<c:forEach items="${newsList}" var="news" varStatus="status">
-				<tr>
-					<td>${status.count}</td>
-					<td><a style = "color: black;" href = "${news.href}" target="blank">${news.title}</a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
-	<br>
-	
-	<table style = "align-content: center;">
-		<thead>
-			<tr>
-				<td><strong>No.</strong></td>
-				<td><strong>부동산 뉴스</strong></td>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<c:forEach items="${newsList2}" var="news" varStatus="status">
-				<tr>
-					<td>${status.count}</td>
-					<td><a style = "color: black;" href = "${news.href}" target="blank">${news.title}</a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
 </body>
 </html>

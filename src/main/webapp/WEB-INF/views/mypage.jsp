@@ -1,7 +1,10 @@
+<%@page import="org.springframework.ui.Model"%>
 <%@page import="com.example.demo.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -60,8 +63,23 @@ $(function() {
 <h1><%=dto.getName() %>의 마이 페이지</h1>
 
 
-<%=dto.getApt() %> <br>
-${aptInfo.min_price/100000000}억 ~ ${aptInfo.max_price/100000000}억
+<h2><%=dto.getApt() %></h2>
+
+<%-- ${list_length} --%>
+
+<c:if test="${list_length !=  0}">
+	<c:forEach items="${aptInfo}" var = "aptInfo">
+		<span><strong>${aptInfo.year} : ${aptInfo.min_price/10000}억 ~ ${aptInfo.max_price/10000}억</strong></span>
+	</c:forEach>
+</c:if>
+
+<c:if test="${list_length ==  0}">
+	<span> <strong>준비중....</strong></span>
+</c:if>
+
+
+
+
 
 <h1>내가 쓴 게시글</h1>
 <table class="table table-bordered table-hover text-center" id = "example-table-1">

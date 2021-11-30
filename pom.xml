@@ -23,14 +23,9 @@
 		<!-- Jsoup -->
 	
 		<dependency>
-	
 			<groupId>org.jsoup</groupId>
-	
 			<artifactId>jsoup</artifactId>
-	
-			<version>1.10.2</version>
-	
-	
+			<version>1.14.3</version>
 		</dependency>
 
 		<!-- 추가 라이브러리 -->

@@ -22,6 +22,4 @@ public class DongAptDTO {
 		this.apt = apt;
 	}
 	
-	
-
 }

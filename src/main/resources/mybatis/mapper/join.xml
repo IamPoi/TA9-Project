@@ -4,6 +4,11 @@
 	
 <mapper namespace="com.example.demo.mapper.JoinMapper">
 	<insert id="join" parameterType="map">
-		insert into member values(#{userid},#{userpw},#{username},#{userdong_num},#{userapt})
+		insert into member 
+			values(#{userid},#{userpw},#{username},
+				(select dong_num 
+				from location 
+				where dong like concat('%',#{dong},'%') and (dong like concat('%',#{gooName},'%') and dong like concat('%',#{doName},'%')))
+		,#{apt})
 	</insert>
 </mapper>

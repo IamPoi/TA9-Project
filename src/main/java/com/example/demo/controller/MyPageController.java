@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.text.NumberFormat.Style;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -51,13 +52,20 @@ public class MyPageController {
 		
 		
 		map.put("userId", dto.getId());
+		map.put("dong_num", dto.getDong_num());
+		String apt = dto.getApt();
+		apt = apt.replace("아파트", "");
+		map.put("apt", apt);
 		
 		try {
+			
 			DongAptDTO dongAptDTO = das.dongApt(dto);
 			
-			String dong_apt = (String)dongAptDTO.getDong()+"_"+(String)dongAptDTO.getApt();
+//			String dong_apt = (String)dongAptDTO.getDong()+"_"+(String)dongAptDTO.getApt();
 			
-			AptInfoDTO aptInfo = mps.aptInfo(dong_apt);
+			System.out.println(map.toString());
+			
+			ArrayList<AptInfoDTO> aptInfo = mps.aptInfo(map);
 			
 			model.addAttribute("aptInfo",aptInfo);
 			
@@ -68,6 +76,13 @@ public class MyPageController {
 			ArrayList<CommentDTO> myCommentList = mcs.myCommentView(map);
 			
 			model.addAttribute("myCommentList",myCommentList);
+			
+			System.out.println(aptInfo.toString());
+			
+			System.out.println(aptInfo.size());
+			
+			model.addAttribute("list_length",aptInfo.size());
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

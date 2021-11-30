@@ -19,6 +19,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
 $(document).ready(function() {
 	$("#joinBtn").click(function() {
 		if($("#userid").val() == "") {
@@ -30,12 +31,6 @@ $(document).ready(function() {
 		} else if($("#username").val() == "") {
 			alert("이름 입력!!!");
 			return;
-		} else if($("#userdong_num").val() == "") {
-			alert("동번호 입력!!!");
-			return;
-		} else if($("#userapt").val() == "") {
-			alert("아파트 입력!!!");
-			return;
 		} else {
 			$("#joinform").attr("action", "${root}/join").submit();
 		}
@@ -44,43 +39,131 @@ $(document).ready(function() {
 });
 
 
+	$(document).ready(function() {
+		$("#checkBtn").click(function() {
+			$.ajax({
+				url : "/idCheck",
+				type : "post",
+				dataType : "json",
+				data : {
+					"id" : $("#userid").val()
+				},
+				success : function(data) {
+					if ($("#userid").val() == "") {
+						alert("아이디 입력!!!");
+						return;
+					} else {
+
+						if (data == 1) {
+							alert("중복된 아이디");
+							$("#userid").val('');
+						} else if (data == 0) {
+							alert("사용 가능");
+						}
+
+					}
+
+				}
+			})
+
+		});
+
+	});
 </script>
 
 </head>
 <body>
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
+<br>
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <div class="container" align="center">
+
 		<div class="col-lg-6" align="center">
 			<form id="joinform" method="post" action="">
 				<div class="form-group" align="left">
 					<label for="">아이디</label>
-					<input type="text" class="form-control" id="userid" name="userid" placeholder="">
+					<input type="text" class="form-control" id="userid" name="userid" placeholder="" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
+					<button class = "btn btn-warning" id = "checkBtn" type="button">중복체크</button>
 				</div>
 				<div class="form-group" align="left">
 					<label for="">비밀번호</label>
-					<input type="password" class="form-control" id="userpw" name="userpw" placeholder="" onkeydown="javascript:if(event.keyCode == 13) {login();}">
+					<input type="password" class="form-control" id="userpw" name="userpw" placeholder="">
 				</div>
 				<div class="form-group" align="left">
 					<label for="">이름</label>
 					<input type="text" class="form-control" id="username" name="username" placeholder="">
 				</div>
-				<div class="form-group" align="left">
+				
+				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
+				<input type="text" id="postcode" class="form-control" placeholder="우편번호"><br>
+			 	<input type="text" id="address" class="form-control" placeholder="주소" name = "road"><br>
+			 	<input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name = "dong_apt">
+
+				<!-- <div class="form-group" align="left">
 					<label for="">동번호</label>
 					<input type="text" class="form-control" id="userdong_num" name="userdong_num" placeholder="">
 				</div>
 				<div class="form-group" align="left">
-					<label for="">아파트 이름</label>
+					<label for="">아파트</label>
 					<input type="text" class="form-control" id="userapt" name="userapt" placeholder="">
-				</div>
+				</div> -->
+				
+				
 				<div class="form-group" align="center">
 					<button type="button" id="joinBtn" class="btn btn-warning">회원가입</button>
 				</div>
 			</form>
-
-
+			
 		</div>
 	</div>
+	
+	<script>
+	 function execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var roadAddr = data.roadAddress; // 도로명 주소 변수
+	                var extraRoadAddr = ''; // 참고 항목 변수
+
+	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraRoadAddr += data.bname;
+	                }
+	                // 건물명이 있고, 공동주택일 경우 추가한다.
+	                if(data.buildingName !== '' && data.apartment === 'Y'){
+	                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                if(extraRoadAddr !== ''){
+	                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+	                }
+
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('postcode').value = data.zonecode;
+	                document.getElementById("address").value = data.address;
+	                /* document.getElementById("address").value = data.jibunAddress; */
+	                
+	                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+	                if(roadAddr !== ''){
+	                    document.getElementById("extraAddress").value = extraRoadAddr;
+	                } else {
+	                    document.getElementById("extraAddress").value = '';
+	                }
+	                
+	                console.log(data)
+	                
+	            }
+	        }).open();
+	    }
+    
+</script>
 
 </body>
 </html>
