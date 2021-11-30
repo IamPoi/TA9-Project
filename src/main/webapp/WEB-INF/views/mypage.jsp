@@ -69,7 +69,7 @@ $(function() {
 
 <c:if test="${list_length !=  0}">
 	<c:forEach items="${aptInfo}" var = "aptInfo">
-		<span><strong>${aptInfo.year} : ${aptInfo.min_price/10000}억 ~ ${aptInfo.max_price/10000}억</strong></span>
+		<span><strong>${aptInfo.year} : <%-- ${aptInfo.min_price/10000}억 ~  --%>${aptInfo.max_price/10000}억</strong></span><br>
 	</c:forEach>
 </c:if>
 

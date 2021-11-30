@@ -50,6 +50,7 @@
 }); */
 
 
+
 $(function(){
 	$(".updateBtn").on("click",function(){
 		
@@ -65,6 +66,7 @@ $(function(){
 		
 	});
 });
+
 
 $(function(){
 	$(".deleteBtn").on("click",function(){
@@ -83,19 +85,16 @@ $(function(){
 });
 
 
+
 </script>
 </head>
 
 <body>
 
-
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
-
-
-
-<div class="row" style = "width: 80%; padding-left: 15%">
-	<h1><%=dto.getId()%></h1>
-	<div class = "center"><%=dto.getDong_num() %>동 게시판</div>
+<br>
+<div class="row" style = "padding-left: 15%; width: 85%;">
+	<div class = "center">${user_location.dong} 게시판</div>
 	
 		<form action="post_search" method="get" >
 			<input type="text" placeholder="검색 할 내용" name = "search">
@@ -115,7 +114,7 @@ $(function(){
 		<c:forEach items="${post_list}" var = "post">
 			<tr>
 				<td>${post.post_num}</td>
-				<td><a style="color:black;" href="post_detail?no=${post.post_num}">${post.title}</a></td>
+				<td><a  style = "color : black" href="post_detail?no=${post.post_num}">${post.title}</a></td>
 				<c:set var = "id" value="<%=dto.getId()%>"></c:set>
 				<c:choose>
 					<c:when test="${post.writer_id == id}">
@@ -131,7 +130,7 @@ $(function(){
 		</c:forEach>
 	</tbody>
 	</table>
-	<a  href="post_write" id = "post-write" class = "right">글쓰기</a>
+	<a  href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
 </div>	
 
 

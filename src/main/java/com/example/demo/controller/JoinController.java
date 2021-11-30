@@ -40,7 +40,7 @@ public class JoinController {
 		int result = ics.idCheck(id);
 		
 		return result;
-	}	
+	}
 	
 	
 	@PostMapping("/join")

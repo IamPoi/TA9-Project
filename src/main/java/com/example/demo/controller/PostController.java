@@ -35,9 +35,6 @@ public class PostController {
 			return "redirect:/";
 		}
 		
-		
-		
-		
 		System.out.println("게시판 목록");
 		
 		UserDTO dto =  (UserDTO)session.getAttribute("user");
@@ -56,15 +53,14 @@ public class PostController {
 			
 			model.addAttribute("post_list",post_list);
 			
-			model.addAttribute("dong_num",dong_num);
-			
 			LocationDTO locationDTO = uls.userLocation(dong_num);
 			
 			model.addAttribute("user_location",locationDTO);
 			
 			
+			
 		} catch (Exception e) {
-			System.out.println("오류");
+			e.printStackTrace();
 		}
 		return "post";
 	}

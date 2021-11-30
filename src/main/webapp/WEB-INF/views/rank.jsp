@@ -1,3 +1,4 @@
+<%@page import="com.example.demo.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -18,57 +19,37 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	
-<script type="text/javascript">
-
-
-
-</script>
-	
 </head>
 <body>
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 
-<div style="width: 85%;padding-left: 15%;">
+<br>
+<div style = "width : 85%;padding-left: 15%;">
+<strong>${location.dong}의 아파트 순위</strong>
+<table id="example-table-1" class="table table-bordered table-hover text-center">
+	<thead>
+		<tr>
+			<th>No.</th>
+			<th>APT</th>
+			<th>MAX_PRICE</th>
+		</tr>
+	</thead>
 	
-	<br>
-	<table style = "align-content: center;">
-		<thead>
+	<tbody>	
+		<c:forEach items="${rank_list}" var = "rank" varStatus="status">
 			<tr>
-				<td><strong>No.</strong></td>
-				<td><strong>실시간 뉴스 헤드라인</strong></td>
+				<td>${status.count}</td>
+				<td>${rank.apt}</td>
+				<td>${rank.max_price}</td>
 			</tr>
-		</thead>
-		
-		<tbody>
-			<c:forEach items="${newsList}" var="news" varStatus="status">
-				<tr>
-					<td>${status.count}</td>
-					<td><a style = "color: black;" href = "${news.href}" target="blank">${news.title}</a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
-	<br>
-	
-	<table style = "align-content: center;">
-		<thead>
-			<tr>
-				<td><strong>No.</strong></td>
-				<td><strong>부동산 뉴스</strong></td>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<c:forEach items="${newsList2}" var="news" varStatus="status">
-				<tr>
-					<td>${status.count}</td>
-					<td><a style = "color: black;" href = "${news.href}" target="blank">${news.title}</a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
+		</c:forEach>
+	</tbody>
 	</table>
 </div>
+<br>
+
+
+
 </body>
 </html>

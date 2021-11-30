@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.model.LocationDTO;
 import com.example.demo.model.PostDTO;
 import com.example.demo.model.UserDTO;
 import com.example.demo.service.PostSearchService;
+import com.example.demo.service.UserLocationService;
 
 @Controller
 @RequestMapping("/")
@@ -23,10 +25,12 @@ public class PostSearchController {
 	@Autowired
 	private PostSearchService pss;
 	
+	@Autowired
+	private UserLocationService uls;
+	
 	@GetMapping("post_search")
 	public String postSearch(@RequestParam Map<String, Object> map,Model model, HttpSession session) {
 		
-			System.out.println("????");
 		
 		try {
 			UserDTO user = (UserDTO)session.getAttribute("user");
@@ -46,6 +50,10 @@ public class PostSearchController {
 			model.addAttribute("post_list",post);
 			
 			System.out.println(post.get(0).getContent());
+			
+			LocationDTO locationDTO = uls.userLocation(dong_num);
+			
+			model.addAttribute("user_location",locationDTO);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

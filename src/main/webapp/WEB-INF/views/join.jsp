@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="root" value="${pageContext.request.contextPath}"/>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>지금 우리 동네는</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
+<link rel="shortcut icon" type="image/x-icon"
+	href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -19,25 +20,28 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+	$(document).ready(function() {
+		$("#joinBtn").click(function() {
+			if ($("#userid").val() == "") {
+				alert("아이디 입력!!!");
+				return;
+			} else if ($("#userpw").val() == "") {
+				alert("비밀번호 입력!!!");
+				return;
+			} else if ($("#username").val() == "") {
+				alert("이름 입력!!!");
+				return;
+			} else {
+				if ($('#pwCheck').val() == $('#userpw').val()) {
+					$("#joinform").attr("action", "${root}/join").submit();
+				} else {
+					alert("비밀번호를 확인 해주세요")
+					$('pwCheck').val('');
+				}
+			}
+		});
 
-$(document).ready(function() {
-	$("#joinBtn").click(function() {
-		if($("#userid").val() == "") {
-			alert("아이디 입력!!!");
-			return;
-		} else if($("#userpw").val() == "") {
-			alert("비밀번호 입력!!!");
-			return;
-		} else if($("#username").val() == "") {
-			alert("이름 입력!!!");
-			return;
-		} else {
-			$("#joinform").attr("action", "${root}/join").submit();
-		}
 	});
-	
-});
-
 
 	$(document).ready(function() {
 		$("#checkBtn").click(function() {
@@ -59,6 +63,7 @@ $(document).ready(function() {
 							$("#userid").val('');
 						} else if (data == 0) {
 							alert("사용 가능");
+							$("#joinBtn").attr("disabled", false);
 						}
 
 					}
@@ -73,34 +78,42 @@ $(document).ready(function() {
 
 </head>
 <body>
-<%@ include file = "/WEB-INF/views/menu.jsp" %>
-<br>
+	<%@ include file="/WEB-INF/views/menu.jsp"%>
+	<br>
 
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<div class="container" align="center">
+	<div class="container" align="center">
 
 		<div class="col-lg-6" align="center">
 			<form id="joinform" method="post" action="">
 				<div class="form-group" align="left">
-					<label for="">아이디</label>
-					<input type="text" class="form-control" id="userid" name="userid" placeholder="" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
-					<button class = "btn btn-warning" id = "checkBtn" type="button">중복체크</button>
+					<label for="">아이디</label> <input type="text" class="form-control"
+						id="userid" name="userid" placeholder=""
+						onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
+					<button class="btn btn-warning" id="checkBtn" type="button">중복체크</button>
 				</div>
 				<div class="form-group" align="left">
-					<label for="">비밀번호</label>
-					<input type="password" class="form-control" id="userpw" name="userpw" placeholder="">
+					<label for="">비밀번호</label> <input type="password"
+						class="form-control" id="userpw" name="userpw" placeholder="">
 				</div>
 				<div class="form-group" align="left">
-					<label for="">이름</label>
-					<input type="text" class="form-control" id="username" name="username" placeholder="">
+					<label for="">비밀번호 체크</label> <input type="password"
+						class="form-control" id="pwCheck" name="pwCheck" placeholder="">
 				</div>
-				
+				<div class="form-group" align="left">
+					<label for="">이름</label> <input type="text" class="form-control"
+						id="username" name="username" placeholder="">
+				</div>
+
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-				<input type="text" id="postcode" class="form-control" placeholder="우편번호"><br>
-			 	<input type="text" id="address" class="form-control" placeholder="주소" name = "road"><br>
-			 	<input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name = "dong_apt">
+				<input type="text" id="postcode" class="form-control"
+					placeholder="우편번호"><br> <input type="text"
+					id="address" class="form-control" placeholder="주소" name="road"><br>
+				<input type="text" id="extraAddress" class="form-control"
+					placeholder="참고항목" name="dong_apt">
 
 				<!-- <div class="form-group" align="left">
 					<label for="">동번호</label>
@@ -110,16 +123,17 @@ $(document).ready(function() {
 					<label for="">아파트</label>
 					<input type="text" class="form-control" id="userapt" name="userapt" placeholder="">
 				</div> -->
-				
-				
+
+
 				<div class="form-group" align="center">
-					<button type="button" id="joinBtn" class="btn btn-warning">회원가입</button>
+					<button type="button" id="joinBtn" class="btn btn-warning"
+						disabled="disabled">회원가입</button>
 				</div>
 			</form>
-			
+
 		</div>
 	</div>
-	
+
 	<script>
 	 function execDaumPostcode() {
 	        new daum.Postcode({

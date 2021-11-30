@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+	
+<mapper namespace="com.example.demo.mapper.RankMapper">
 	<!-- <select id="postView" parameterType="map" resultType="list"> -->
-<mapper namespace="com.example.demo.mapper.UserLocationMapper">
-	<select id="userLocation" resultType="com.example.demo.model.LocationDTO" parameterType="long">
-		select * from location where dong_num = #{dong_num}
+	<select id="rankView" resultType="com.example.demo.model.AptInfoDTO">
+		select * 
+		from apt_info 
+		where dong_num = #{dong_num} and year = 2021 order by max_price desc;
 	</select>
 	
 </mapper>

@@ -147,17 +147,19 @@ $(function() {
 </head>
 <body>
 
+
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 
+<div style="width: 85%;padding-left: 15%; ">
 
-<h1>${post_detail.title}</h1>
+<h1>제목 : ${post_detail.title}</h1>
 
-${post_detail.post_num}
-${post_detail.content}
-${post_detail.writer_id}
+번호 : ${post_detail.post_num}
+작성자 : ${post_detail.writer_id}<br>
+내용 : ${post_detail.content}
 <br><br><br><br>
 <section class = "table-section">
-<table class="table table-bordered table-hover text-center" id = "example-table-1">
+<table class="table table-bordered table-hover text-center" id = "example-table-1" style = "width: 100%; position: relative;">
 <thead>
 	<tr>	
 		<td>댓글 번호</td>
@@ -192,7 +194,7 @@ ${post_detail.writer_id}
 		<input id = "commentBtn" type="submit" value="등록">
 	</form>
 
-
+</div>
 
 </body>
 </html>
