@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -12,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.model.PostDTO;
 import com.example.demo.model.UserDTO;
+import com.example.demo.service.PostNoService;
 import com.example.demo.service.PostService;
 import com.example.demo.service.PostWriteService;
 
@@ -27,6 +31,9 @@ public class PostWriteController {
 	
 	@Autowired
 	private PostWriteService pws;
+	
+	@Autowired
+	private PostNoService pns;
 
 	@GetMapping("post_write")
 	public String post_write() {
@@ -34,23 +41,49 @@ public class PostWriteController {
 	}
 	
 	@PostMapping("post_enrollment")
-	public String post_enrollement(@RequestParam Map<String,Object> map,Model model,HttpSession session) {
+	public String post_enrollement(@RequestParam Map<String,Object> map,@RequestParam("img_name") MultipartFile file, Model model,HttpSession session) {
+		int no = 0;
+		try {
+			no = pns.postNo();
+		} catch (Exception e) {
+
+		}
+		
+		//no는 가장 마지막 글 번호
+		no = no + 1;
+		
+		System.out.println("hihi");
+
+		StringBuilder sb = new StringBuilder();
+
+		// file image 가 없을 경우
+		if (file.isEmpty()) {
+			sb.append("none");
+		} else {
+			sb.append(file.getOriginalFilename());
+		}
+
+		if (!file.isEmpty()) {
+			File dest = new File("C:\\Users\\ta9\\Desktop\\STS_Prac\\Spring_Prac\\src\\main\\webapp\\img/" +no+"-"+sb.toString());
+			try {
+				file.transferTo(dest);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// db에 파일 위치랑 번호 등록
+		}
 		
 		UserDTO dto =  (UserDTO)session.getAttribute("user");
 		System.out.println("게시글 등록 시도");
 		map.put("dong_num", dto.getDong_num());
 		map.put("writer", dto.getId());
-		String content = (String)map.get("content");
+		map.put("no", no);
 		
-		System.out.println(content);
-		
-		content = content.replace("<p>", "");
-		
-		content = content.replace("</p>", "");
-		
-		System.out.println(content);
-		
-		map.put("content",content);
+		System.out.println("-------------------------------------------");
+		System.out.println(sb.toString());
+		map.put("img_name", no+"-"+sb.toString());
 		
 		try {
 			pws.postWrite(map);
@@ -60,7 +93,6 @@ public class PostWriteController {
 			System.out.println("등록 실패");
 		}
 		
-		// 게시글 최신화
 		
 		System.out.println(dto.getDong_num());
 		
@@ -68,6 +100,7 @@ public class PostWriteController {
 		
 		
 		try {
+			// 게시글 최신화
 			
 			ArrayList<PostDTO> post_list = ps.postView(dong_num);
 			
@@ -79,6 +112,8 @@ public class PostWriteController {
 		} catch (Exception e) {
 			System.out.println("오류");
 		}
+		
+		
 		
 		return "redirect:/post";
 	}

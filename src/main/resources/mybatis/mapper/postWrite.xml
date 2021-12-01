@@ -4,10 +4,18 @@
 	
 <mapper namespace="com.example.demo.mapper.PostWriteMapper">
 	<!-- <select id="postView" parameterType="map" resultType="list"> -->
+	
+	
 	<insert id="postWrite" parameterType="map">
+	
+	<selectKey keyProperty="post_num" order="BEFORE" resultType = "int">
+		(select ifnull(max(post_num)+1,1) from post p)
+	</selectKey>
+	
 		insert into post
-		(title,content,writer,dong_num) 
-		values(#{title},#{content},#{writer},#{dong_num})
+		(post_num,title,content,writer,dong_num,img_name)
+		values(#{post_num},#{title},#{content},#{writer},#{dong_num}, #{img_name})
+		
 	</insert>
 	
 </mapper>

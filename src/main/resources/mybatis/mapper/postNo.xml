@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<!-- <select id="postView" parameterType="map" resultType="list"> -->
+<mapper namespace="com.example.demo.mapper.PostNoMapper">
+	<select id="postNo" resultType="int">
+		select post_num from post order by post_num desc limit 1;
+	</select>
+	
+</mapper>

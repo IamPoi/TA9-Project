@@ -6,10 +6,12 @@
 <html>
 <head>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js">
-</script>
+<script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+
 
 <script type="text/javascript">
+
 
 </script>
 
@@ -18,6 +20,7 @@
 .ck-content{
 	height: 300px;
 } 
+
 
 
 
@@ -32,16 +35,22 @@
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 <br>
 <div align="center"  style="width: 85%; padding-left: 15%;">
-	<form action="${root}/post_enrollment" method="post">
-		제목 <input type="text" name="title" style=""><br><br>
-
+	<form action="${root}/post_enrollment" method="post" enctype="multipart/form-data">
+		제목 <input type="text" id = "title" name="title" style=""><br><br>
 		<textarea style = "height:500px" name="content" id="content_textarea"></textarea>
-		<input type="submit" value="글 등록" id="submit-btn">
+		<input type="file" name="img_name" multiple="multiple"/><br>
+		<input type="submit" id = "button" value="글 등록" id="submit-btn" onclick="getData()">
 	</form>
+	
 </div>
 	<script type="text/javascript">
 	ClassicEditor
-    .create(document.querySelector('#content_textarea'))
+    .create(document.querySelector('#content_textarea'),{
+    	ckfinder:{
+    		uploadUrl:'/image'
+    		//uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+    		}
+    })
     .catch(error=>{
       console.error(error);
     });

@@ -19,6 +19,19 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>com.jfinal</groupId>
+			<artifactId>cos</artifactId>
+			<version>2017.5</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version>
+		</dependency>
+		
 	
 		<!-- Jsoup -->
 	

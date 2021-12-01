@@ -27,6 +27,7 @@
 </head>
 <body>
 
+
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 
 <div style="width: 85%;padding-left: 15%;">

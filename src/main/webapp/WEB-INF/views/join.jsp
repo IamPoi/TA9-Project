@@ -36,7 +36,7 @@
 					$("#joinform").attr("action", "${root}/join").submit();
 				} else {
 					alert("비밀번호를 확인 해주세요")
-					$('pwCheck').val('');
+					$('#pwCheck').val('');
 				}
 			}
 		});
