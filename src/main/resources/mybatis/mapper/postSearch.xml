@@ -11,6 +11,8 @@
 		  want.title like concat('%',#{content},'%') 
 		  	or 
 	  	  want.content like concat('%',#{content},'%')
+  	 	order by post_num desc
+	  	 
 	</select>
 	
 </mapper>

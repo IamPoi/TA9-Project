@@ -101,6 +101,7 @@ $(function(){
 			<input type="submit" value="검색">
 		</form>
 	
+	<a  href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
 	<table id="example-table-1" style = "width : 100%;" class="table table-bordered table-hover text-center">
 	<thead>
 		<tr>
@@ -113,6 +114,7 @@ $(function(){
 	<tbody>	
 		<c:forEach items="${post_list}" var = "post">
 			<tr>
+			
 				<td>${post.post_num}</td>
 				<td><a  style = "color : black" href="post_detail?no=${post.post_num}">${post.title}</a></td>
 				<c:set var = "id" value="<%=dto.getId()%>"></c:set>
@@ -130,7 +132,6 @@ $(function(){
 		</c:forEach>
 	</tbody>
 	</table>
-	<a  href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
 </div>	
 
 

@@ -101,6 +101,7 @@ $(function(){
 			<input type="submit" value="검색">
 		</form>
 	
+	<a href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
 	<table id="example-table-1" style = "width : 100%;" class="table table-bordered table-hover text-center">
 	<thead>
 		<tr>
@@ -130,7 +131,6 @@ $(function(){
 		</c:forEach>
 	</tbody>
 	</table>
-	<a  href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
 </div>	
 
 

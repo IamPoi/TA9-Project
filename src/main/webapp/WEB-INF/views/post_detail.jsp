@@ -156,8 +156,8 @@ $(function() {
 
 번호 : ${post_detail.post_num}
 작성자 : ${post_detail.writer_id}<br>
-<img alt="" src="../img/${post_detail.img}"><br>
-<div>내용 : ${post_detail.content}</div>
+<img alt="" src="../img/${post_detail.img}"><br><br>
+<div><strong>${post_detail.content}</strong></div>
 <br><br><br><br>
 <section class = "table-section">
 <table class="table table-bordered table-hover text-center" id = "example-table-1" style = "width: 100%; position: relative;">

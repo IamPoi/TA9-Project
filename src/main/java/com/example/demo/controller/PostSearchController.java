@@ -37,7 +37,7 @@ public class PostSearchController {
 			
 			Long dong_num = user.getDong_num();	
 			
-			PostDTO postDto = new PostDTO(0, null, null, null, dong_num);
+			PostDTO postDto = new PostDTO(0, null, null, null, dong_num,null);
 			
 			String search = (String)map.get("search");
 			
