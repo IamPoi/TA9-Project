@@ -5,7 +5,6 @@
 <mapper namespace="com.example.demo.mapper.MyPageMapper">
 	<select id="aptInfo" parameterType="map" resultType="com.example.demo.model.AptInfoDTO">
 		select * from apt_info where apt like concat('%',#{apt},'%') and dong_num like concat('%',#{dong_num},'%')
-																		<!-- dong like concat('%',#{dong},'%') -->
 	</select>
 	
 </mapper>

@@ -5,7 +5,10 @@
 	<!-- <select id="myPostView" parameterType="map" resultType="list"> -->
 <mapper namespace="com.example.demo.mapper.MyPostMapper">
 	<select id="myPostView" resultType="com.example.demo.model.PostDTO">
-		select * from post where writer = #{userId} order by post_num desc limit 5
+		select p.*, d.cnt
+		from post as p, (select post_num, count(post_num) as cnt from declaration group by post_num) d
+		where p.post_num = d.post_num
+		and writer = #{userId} order by p.post_num desc limit 5;
 	</select>
 	
 </mapper>

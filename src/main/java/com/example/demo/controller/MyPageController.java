@@ -61,8 +61,6 @@ public class MyPageController {
 			
 			DongAptDTO dongAptDTO = das.dongApt(dto);
 			
-//			String dong_apt = (String)dongAptDTO.getDong()+"_"+(String)dongAptDTO.getApt();
-			
 			System.out.println(map.toString());
 			
 			ArrayList<AptInfoDTO> aptInfo = mps.aptInfo(map);

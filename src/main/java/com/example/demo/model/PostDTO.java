@@ -8,6 +8,15 @@ public class PostDTO {
 	private String writer_id;
 	private Long dong_num;
 	private String img;
+	private Long declaration;
+
+	public Long getDeclaration() {
+		return declaration;
+	}
+
+	public void setDeclaration(Long declaration) {
+		this.declaration = declaration;
+	}
 
 	public int getPost_num() {
 		return post_num;
@@ -57,6 +66,18 @@ public class PostDTO {
 		this.img = img;
 	}
 
+	public PostDTO(int post_num, String title, String content, String writer_id, Long dong_num, String img,
+			Long declaration) {
+		super();
+		this.post_num = post_num;
+		this.title = title;
+		this.content = content;
+		this.writer_id = writer_id;
+		this.dong_num = dong_num;
+		this.img = img;
+		this.declaration = declaration;
+	}
+
 	public PostDTO(int post_num, String title, String content, String writer_id, Long dong_num, String img) {
 		super();
 		this.post_num = post_num;
@@ -66,5 +87,7 @@ public class PostDTO {
 		this.dong_num = dong_num;
 		this.img = img;
 	}
+	
+	
 
 }

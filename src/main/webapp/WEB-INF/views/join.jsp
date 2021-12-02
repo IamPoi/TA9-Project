@@ -107,24 +107,12 @@
 					<label for="">이름</label> <input type="text" class="form-control"
 						id="username" name="username" placeholder="">
 				</div>
-
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
 				<input type="text" id="postcode" class="form-control"
 					placeholder="우편번호"><br> <input type="text"
 					id="address" class="form-control" placeholder="주소" name="road"><br>
 				<input type="text" id="extraAddress" class="form-control"
 					placeholder="참고항목" name="dong_apt">
-
-				<!-- <div class="form-group" align="left">
-					<label for="">동번호</label>
-					<input type="text" class="form-control" id="userdong_num" name="userdong_num" placeholder="">
-				</div>
-				<div class="form-group" align="left">
-					<label for="">아파트</label>
-					<input type="text" class="form-control" id="userapt" name="userapt" placeholder="">
-				</div> -->
-
-
 				<div class="form-group" align="center">
 					<button type="button" id="joinBtn" class="btn btn-warning"
 						disabled="disabled">회원가입</button>

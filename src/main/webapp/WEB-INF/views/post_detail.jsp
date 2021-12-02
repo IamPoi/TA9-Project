@@ -136,6 +136,17 @@ $(function() {
 	});
 });
 
+$(function(){
+	$("#decl-button").on('click',function(){
+		
+		const url = new URL(window.location.href);
+		const urlPa = url.searchParams;
+		var no =urlPa.get('no');
+		
+		
+		location.href = "declaration?no="+no;
+	})
+})
 
 
 
@@ -153,7 +164,6 @@ $(function() {
 <div style="width: 85%;padding-left: 15%; ">
 
 <h1>제목 : ${post_detail.title}</h1>
-
 번호 : ${post_detail.post_num}
 작성자 : ${post_detail.writer_id}<br>
 <img alt="" src="../img/${post_detail.img}"><br><br>
@@ -194,6 +204,23 @@ $(function() {
 		<textarea rows="" cols="" name="content"></textarea>
 		<input id = "commentBtn" type="submit" value="등록">
 	</form>
+	
+	<c:set var="session" value="${sessionScope.user}"></c:set>
+	<c:set var="reporter" value = "${reporter}"></c:set>
+	
+	<c:forEach items="${reporter}" var = "rep">
+		<c:if test="${rep == session.id}">
+			<c:set var = "result" value = "false"></c:set>
+		</c:if>
+	</c:forEach>
+	
+	<c:if test="${result != false}">
+		<button type="button" id = "decl-button">신고</button>
+	</c:if>
+	
+	<c:if test="${result == false}">
+		<button type="button" id = "decl-button" disabled="disabled">신고완료</button>	
+	</c:if>
 
 </div>
 

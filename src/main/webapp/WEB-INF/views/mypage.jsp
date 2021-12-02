@@ -87,7 +87,8 @@ $(function() {
 	<tr>	
 		<td>게시글 번호</td>
 		<td>게시글 제목</td>
-		<td>게시글 작성자</td>
+		<!-- <td>게시글 작성자</td> -->
+		<td>신고 수</td>
 	</tr>
 </thead>
 	<tbody>
@@ -95,7 +96,8 @@ $(function() {
 		<tr>
 			<td>${my_post.post_num}</td>
 			<td>${my_post.title}</td>
-			<td>${my_post.writer_id}</td>
+			<%-- <td>${my_post.writer_id}</td> --%>
+			<td>${my_post.declaration}</td>
 		</tr>
 	</c:forEach>
 	</tbody>
@@ -108,13 +110,13 @@ $(function() {
 	<tr>	
 		<td>댓글 번호</td>
 		<td>댓글 내용</td>
-		<td>댓글 작성자</td>
+		<!-- <td>댓글 작성자</td> -->
 	</tr>
 	<c:forEach items="${myCommentList}" var = "my_comment">
 		<tr>
 			<td>${my_comment.comment_num}</td>
 			<td>${my_comment.content}</td>
-			<td>${my_comment.comment_writer}</td>
+			<%-- <td>${my_comment.comment_writer}</td> --%>
 		</tr>
 	</c:forEach>
 	
