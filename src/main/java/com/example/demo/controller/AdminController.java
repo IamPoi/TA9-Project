@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.example.demo.service.AdminPostViewService;
 
 @Controller
 public class AdminController {
@@ -22,8 +19,6 @@ public class AdminController {
 //		return "admin_post_search";
 //	}
 //	
-	@Autowired
-	private AdminPostViewService apvs;
 	
 	@GetMapping("admin_post")
 	public String adminPostView() throws Exception {

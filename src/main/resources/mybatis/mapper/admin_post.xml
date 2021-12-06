@@ -2,16 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-	<!-- <select id="postView" parameterType="map" resultType="list"> -->
+<!-- <select id="postView" parameterType="map" resultType="list"> -->
 <mapper namespace="com.example.demo.mapper.AdminPostViewMapper">
-	<select id="allPostView" resultType="com.example.demo.model.PostDTO" parameterType="map">
-		select * 
+	<select id="allPostView"
+		resultType="com.example.demo.model.PostDTO" parameterType="map">
+		select *
 		from post
 		where
-		  title like concat('%',#{search},'%')
-		  	or 
-	  	  content like concat('%',#{search},'%')
-  	 	order by post_num desc
+		title like concat('%',#{search},'%')
+		or
+		content like concat('%',#{search},'%')
+		order by post_num desc
 	</select>
-	
+
+	<select id="decPostView"
+		resultType="com.example.demo.model.PostDTO" parameterType="map">
+		select p.*, d.cnt
+		from post as p, (select post_num, count(post_num) as cnt
+		from declaration group by post_num) d
+		where p.post_num = d.post_num
+		order by p.post_num desc;
+	</select>
 </mapper>
+
+
+
+
+<!-- select * from post where title like concat('%',#{search},'%') or content 
+	like concat('%',#{search},'%') order by post_num desc -->

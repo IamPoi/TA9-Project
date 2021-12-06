@@ -8,5 +8,8 @@ import com.example.demo.model.PostDTO;
 public interface AdminPostViewService {
 	
 	public ArrayList<PostDTO>  allPostView(Map<String, Object> map) throws Exception; 
+	public ArrayList<PostDTO>  decPostView(Map<String, Object> map) throws Exception; 
+	
+	
 
 }

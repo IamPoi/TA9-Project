@@ -13,5 +13,7 @@ import com.example.demo.model.PostDTO;
 public interface AdminPostViewMapper {
 	
 	public ArrayList<PostDTO> allPostView(Map<String, Object> map);
+	
+	public ArrayList<PostDTO> decPostView(Map<String, Object> map);
 
 }

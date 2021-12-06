@@ -27,10 +27,20 @@ public class AdminPostViewController {
 		
 		System.out.println("관리자 게시글 조회 fxck");
 		
-		ArrayList<PostDTO> post_list;
+		
+		ArrayList<PostDTO> post_list = null;
+		
 		try {
-			post_list = apvs.allPostView(map);
-			System.out.println(post_list.toString());			
+			if(map.get("singo").equals("1")) {
+				System.out.println("신고 게시판");
+				post_list = apvs.decPostView(map);
+			}else {
+				System.out.println("일반 게시판");
+				post_list = apvs.allPostView(map);
+			}
+			
+			System.out.println(post_list.toString());
+			
 			model.addAttribute("post_list",post_list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

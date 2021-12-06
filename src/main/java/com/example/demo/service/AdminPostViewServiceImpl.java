@@ -14,6 +14,8 @@ public class AdminPostViewServiceImpl implements AdminPostViewService {
 
 	@Autowired
 	private AdminPostViewMapper adminPostViewMapper;
+	
+	
 
 	@Override
 	public ArrayList<PostDTO> allPostView(Map<String, Object> map) throws Exception {
@@ -21,6 +23,12 @@ public class AdminPostViewServiceImpl implements AdminPostViewService {
 		System.out.println("????????????");
 
 		return adminPostViewMapper.allPostView(map);
+	}
+
+	@Override
+	public ArrayList<PostDTO> decPostView(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return adminPostViewMapper.decPostView(map);
 	}
 
 }
