@@ -138,6 +138,7 @@ function login(){
 
 			<%if (session.getAttribute("user") == null) { %>
 			<li><a href="/">홈</a></li>
+			<li><a href="${root}/admin">관리자</a></li>
 			<li><a href="${root}/login_page" onclick="login()">게시판</a></li>
 			<li><a href="${root}/login_page" onclick="login()">마이페이지</a></li>
 			<li><a href="${root}/login_page" onclick="login()">랭킹</a></li>
@@ -145,11 +146,14 @@ function login(){
 			<li><a href="${root}/login_page">로그인</a></li>
 			
 			<%} else {%>
-			<li><a href="/">홈</a></li>
+			<li><a href="/">홈</a></li>			
+			<li><a href="${root}/admin">관리자</a></li>
 			<li><a href="${root}/post">게시판</a></li>
 			<li><a href="${root}/mypage">마이페이지</a></li>
 			<li><a href="${root}/rankView">랭킹</a></li>
 			<li><a href="${root}/logout">로그아웃</a></li>
+			<li><a href="http://localhost:8088/pandora3/bo">판도라ㄱㄱ</a></li>
+			
 			<%} %>
 			<c:if test="${user != null}">
 				<li style="color: white; padding-top: 1%">

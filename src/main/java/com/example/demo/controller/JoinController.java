@@ -63,6 +63,20 @@ public class JoinController {
 		String doName = list[0];
 		String gooName = list[1]; 
 		
+		if (doName.equals("전남")) {
+			doName = "전라남도";
+		}else if (doName.equals("경남")) {
+			doName = "경상남도";
+		}else if (doName.equals("전북")) {
+			doName = "전라북도";
+		}else if (doName.equals("경북")) {
+			doName = "경상북도";
+		}else if (doName.equals("충북")) {
+			doName = "충청북도";
+		}else if (doName.equals("충남")) {
+			doName = "충청남도";
+		}
+		
 		String want_list [] = dong_apt.split(",");
 		
 		System.out.println(want_list);

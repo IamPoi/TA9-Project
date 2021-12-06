@@ -7,15 +7,17 @@ import com.example.demo.mapper.AdminPostDeleteMapper;
 import com.example.demo.mapper.PostDeleteMapper;
 
 @Service
-public class PostDeleteServiceImpl  implements AdminPostDeleteService{
+public class AdminPostDeleteServiceImpl  implements PostDeleteService{
 	
 	@Autowired
-	private PostDeleteMapper postDeleteMapper;
+	private AdminPostDeleteMapper adminPostDeleteMapper; 
 
 	@Override
 	public void postDelete(int post_num) throws Exception {
 		
-		postDeleteMapper.postDelete(post_num);
+		System.out.println("fxck");
+		
+		adminPostDeleteMapper.postDelete(post_num);
 
 	}
 	

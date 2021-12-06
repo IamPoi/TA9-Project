@@ -2,17 +2,17 @@ spring:
   datasource:
   
 # project
-#    url: jdbc:mysql://14.63.166.136/test6?useUnicode=true&characterEncoding=utf-8
-#    username: pandora_ojt
-#    password: 1234
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://14.63.166.136/test6?useUnicode=true&characterEncoding=utf-8
+    username: pandora_ojt
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 # prac
 #    url: jdbc:mysql://localhost:3306/prac?serverTimezone=Asia/Seoul
-    url: jdbc:mysql://localhost/prac?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Seoul
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: system
+#    url: jdbc:mysql://localhost:3306/prac?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Seoul
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: system
     
   mvc:
     view:

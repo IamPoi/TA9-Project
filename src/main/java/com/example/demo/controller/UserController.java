@@ -37,10 +37,7 @@ public class UserController {
 			 UserDTO user = us.login(map);
 			 if(user != null) {
 				 session.setAttribute("user", user);
-			 } else {
-				 System.out.println("아이디 또는 비밀번호 확인");
-				 return "error";
-			 }
+			 } 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

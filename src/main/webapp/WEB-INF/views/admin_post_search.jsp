@@ -2,8 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
-
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -21,8 +19,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	
-<% UserDTO dto = (UserDTO)session.getAttribute("user");%>
-
 <script type="text/javascript">
 
 // 테이블 클릭 이벤트 (수정,삭제로 인한 보류)
@@ -81,7 +77,9 @@ $(function(){
 		
 		var no = td.eq(0).text();
 		
-		location.href ='post_delete?no='+no;
+		alert(no)
+		
+		location.href ='admin_post_delete?no='+no;
 		
 	});
 });
@@ -94,25 +92,15 @@ $(function(){
 <body>
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
-<br><div class="row" style = "padding-left: 15%; width: 85%;" >
-	<div class = "center">${user_location.dong} 게시판</div>
+<br>
+<div class="row" style = "padding-left: 15%; width: 85%;">
 	
-		<form action="post_search" method="get" >
+		<form action="admin_post_search" method="get" >
 			<input type="text" placeholder="검색 할 내용" name = "search">
 			<input type="submit" value="검색">
 		</form>
-	</div>
-
-<c:if test="${fn:length(post_list) < 5}">
-	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto;">
-</c:if>
-<c:if test="${fn:length(post_list) >= 5}">
-	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto; height: 500px;">
-</c:if>
 	
 	
-	<a href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
-
 	<table id="example-table-1" style = "width : 100%;" class="table table-bordered table-hover text-center">
 	<thead>
 		<tr>
@@ -126,23 +114,12 @@ $(function(){
 		<c:forEach items="${post_list}" var = "post">
 			<tr>
 				<td>${post.post_num}</td>
-				<td><a  style = "color : black" href="post_detail?no=${post.post_num}">${post.title}</a></td>
-				<c:set var = "id" value="<%=dto.getId()%>"></c:set>
-				<c:choose>
-					<c:when test="${post.writer_id == id}">
-						<td>${post.writer_id}<button class = "updateBtn">수정</button><button class = "deleteBtn">삭제</button></td>
-					</c:when>
-					<c:otherwise>
-						<td>${post.writer_id}<button style="visibility: hidden;">수정</button><button style="visibility: hidden;">수정</button></td>
-					</c:otherwise>
-				
-				</c:choose>
-				
+				<td>${post.title}</td>
+				<td>${post.writer_id}<button class = "deleteBtn">삭제</button></td>
 			</tr>
 		</c:forEach>
 	</tbody>
 	</table>
-
 </div>	
 
 
