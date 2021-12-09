@@ -24,9 +24,6 @@ public class PostController {
 	
 	@Autowired
 	private PostService ps;
-
-	@Autowired
-	private UserLocationService uls;
 	
 	@GetMapping("/post")
 	public String postView(Model model, HttpSession session) {
@@ -52,11 +49,6 @@ public class PostController {
 			ArrayList<PostDTO> post_list = ps.postView(dong_num);
 			
 			model.addAttribute("post_list",post_list);
-			
-			LocationDTO locationDTO = uls.userLocation(dong_num);
-			
-			model.addAttribute("user_location",locationDTO);
-			
 			
 			
 		} catch (Exception e) {

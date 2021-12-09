@@ -46,6 +46,8 @@ public class JoinController {
 	@PostMapping("/join")
 	public String join(@RequestParam Map<String, Object> map, Model model) {
 		
+		try {
+		
 		System.out.println("회원가입 시도");
 		
 		System.out.println(map.toString());
@@ -91,13 +93,17 @@ public class JoinController {
 		
 		System.out.println(map.toString());
 
-		try {
+		
 			js.join(map);
+			
+			return "redirect:/";
 		} catch (Exception e) {
 			e.printStackTrace();
+			
+			model.addAttribute("msg","회원가입을 다시 시도해주세요");
+			return "error";
 		}
 		
-		return "redirect:/";
 		
 	}
 	

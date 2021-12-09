@@ -20,6 +20,24 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
+
+
+$("#userpw").keyup(function(e) {
+    console.log("키업!");
+	var content = $(this).val();
+	$("#pw_length").text("(" + content.length + "/ 200)"); //실시간 글자수 카운팅
+	if (content.length > 200) {
+		Alert("최대 200자까지 입력 가능합니다.");
+		$(this).val(content.substring(0, 200));
+		$('#textLengthCheck').html("(200 / 최대 200자)");
+	}
+});
+
+
+
+
+
 	$(document).ready(function() {
 		$("#joinBtn").click(function() {
 			if ($("#userid").val() == "") {
@@ -97,11 +115,12 @@
 				</div>
 				<div class="form-group" align="left">
 					<label for="">비밀번호</label> <input type="password"
-						class="form-control" id="userpw" name="userpw" placeholder="">
+						class="form-control" id="userpw" name="userpw" maxlength="12" minlength="6">
+					<span id = "pw_length">..</span>
 				</div>
 				<div class="form-group" align="left">
 					<label for="">비밀번호 체크</label> <input type="password"
-						class="form-control" id="pwCheck" name="pwCheck" placeholder="">
+						class="form-control" id="pwCheck" name="pwCheck" maxlength="12">
 				</div>
 				<div class="form-group" align="left">
 					<label for="">이름</label> <input type="text" class="form-control"

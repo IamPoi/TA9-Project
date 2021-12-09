@@ -95,7 +95,7 @@ $(function(){
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 <br><div class="row" style = "padding-left: 15%; width: 85%;" >
-	<div class = "center">${user_location.dong} 게시판</div>
+	<div class = "center">${sessionScope.user_location.dong} 게시판</div>
 	
 		<form action="post_search" method="get" >
 			<input type="text" placeholder="검색 할 내용" name = "search">

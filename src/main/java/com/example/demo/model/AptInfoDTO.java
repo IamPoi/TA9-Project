@@ -88,4 +88,13 @@ public class AptInfoDTO {
 		this.avg_price = avg_price;
 	}
 
+	@Override
+	public String toString() {
+		return "AptInfoDTO [year=" + year + ", road_name=" + road_name + ", road_num=" + road_num + ", dong_num="
+				+ dong_num + ", apt=" + apt + ", max_price=" + max_price + ", min_price=" + min_price + ", avg_price="
+				+ avg_price + "]";
+	}
+	
+	
+
 }

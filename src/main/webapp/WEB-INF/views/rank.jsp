@@ -40,7 +40,7 @@
 		<c:forEach items="${rank_list}" var = "rank" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
-				<td>${rank.apt}</td>
+				<td><a style = "color:black;" href = "/apt_detail?road_name=${rank.road_name}&road_num=${rank.road_num}&apt=${rank.apt}">${rank.apt}</a></td>
 				<td>${rank.max_price}</td>
 			</tr>
 		</c:forEach>

@@ -28,8 +28,12 @@
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 
-<h1>아이디 또는 비밀번호를 확인하고 다시 로그인 해주세요.</h1>
-<h1>오류 발생 관리자에게 문의해주세요.</h1>
+
+<c:if test="${msg!=null}">
+	<strong>${msg}</strong>
+</c:if>
+
+
 
 </body>
 </html>

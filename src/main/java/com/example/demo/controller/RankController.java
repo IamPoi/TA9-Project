@@ -44,10 +44,14 @@ public class RankController {
 			
 			model.addAttribute("location",location);
 			
+			System.out.println(rank_list.get(0).toString());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 		
 		return "rank";
 	}

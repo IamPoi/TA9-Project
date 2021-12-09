@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.example.demo.mapper.AptDetailMapper">
+	<!-- <select id="postView" parameterType="map" resultType="list"> -->
+	<select id="aptDetailView" resultType="com.example.demo.model.AptInfoDTO" parameterType="map">
+		select * 
+		from apt_info
+		where 
+		road_name like concat('%',#{road_name},'%') 
+		and 
+		road_num like concat('%',#{road_num},'%')
+		and
+		apt like concat('%',#{apt},'%')
+		and 
+		year = 2021
+	</select>
+	
+</mapper>
