@@ -2,15 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-		<!-- select p.*, d.cnt
-		from post as p, (select post_num, count(post_num) as cnt from declaration group by post_num) d
-		where p.post_num = d.post_num
-		and writer = #{userId} order by p.post_num desc limit 5; -->
-		
 <mapper namespace="com.example.demo.mapper.MyPostMapper">
 	<select id="myPostView" resultType="com.example.demo.model.PostDTO">
 		
-		select * from post where writer = #{userId} order by post_num limit 5;
+		select p.*, IFNULL(d.cnt, 0)
+		from post as p
+        left join  (select post_num, count(post_num) as cnt from declaration group by post_num) d
+		on d.post_num = p.post_num
+		where writer = #{userId} order by p.post_num desc limit 5;
 		
 	</select>
 	

@@ -25,7 +25,7 @@ public class AdminPostViewController {
 		
 		System.out.println(map.toString());
 		
-		System.out.println("관리자 게시글 조회 fxck");
+		System.out.println("관리자 게시글 조회");
 		
 		
 		ArrayList<PostDTO> post_list = null;

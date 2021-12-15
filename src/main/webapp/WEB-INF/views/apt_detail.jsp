@@ -199,9 +199,9 @@ naver.maps.Service.geocode({
     var result = response.result, // 검색 결과의 컨테이너
         items = result.items; // 검색 결과의 배열
     
-    for(step = 0; step < items.length;step++){
-    	if(items[step].addrdetail.sido == want[0] && items[step].addrdetail.sigugun == want[1]){
-    		var want_num = step;
+    for(i = 0; i < items.length; i++){
+    	if(items[i].addrdetail.sido == want[0] && (items[i].addrdetail.sigugun == want[1] || items[i].addrdetail.sigugun == want[1]+" "+want[2] )){
+    		var want_num = i;
     	}
     }
     console.log(want_num)

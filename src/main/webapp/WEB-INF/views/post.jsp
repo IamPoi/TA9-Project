@@ -102,6 +102,11 @@ $(function(){
 			<input type="submit" value="검색">
 		</form>
 	</div>
+	
+<c:if test="${fn:length(post_list) == 0}">
+	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto;">
+	<h1 align="center">${sessionScope.user_location.dong} 게시판에 <br>첫번째 게시글을 등록해주세요.</h1>
+</c:if>
 
 <c:if test="${fn:length(post_list) < 5}">
 	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto;">

@@ -138,7 +138,7 @@ function login(){
 
 			<%if (session.getAttribute("user") == null) { %>
 			<li><a href="/">홈</a></li>
-			<li><a href="${root}/admin">관리자</a></li>
+			<%-- <li><a href="${root}/admin">관리자</a></li> --%>
 			<li><a href="${root}/login_page" onclick="login()">게시판</a></li>
 			<li><a href="${root}/login_page" onclick="login()">마이페이지</a></li>
 			<li><a href="${root}/login_page" onclick="login()">랭킹</a></li>

@@ -7,6 +7,15 @@ public class UserDTO {
 	private String name;
 	private Long dong_num;
 	private String apt;
+	private int activation;
+
+	public int getActivation() {
+		return activation;
+	}
+
+	public void setActivation(int activation) {
+		this.activation = activation;
+	}
 
 	public UserDTO(String id, String pw) {
 		super();
@@ -60,13 +69,15 @@ public class UserDTO {
 		this.apt = apt;
 	}
 
-	public UserDTO(String id, String pw, String name, Long dong_num, String apt) {
+	public UserDTO(String id, String pw, String name, Long dong_num, String apt, int activation) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.dong_num = dong_num;
 		this.apt = apt;
+		this.activation = activation;
 	}
+
 
 }

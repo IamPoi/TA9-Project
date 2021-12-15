@@ -9,6 +9,6 @@
 				(select dong_num 
 				from location 
 				where dong like concat('%',#{dong},'%') and (dong like concat('%',#{gooName},'%') and dong like concat('%',#{doName},'%')))
-		,#{apt})
+		,#{apt},1)
 	</insert>
 </mapper>
