@@ -27,8 +27,10 @@
 $(document).ready(function() {
 	$("#commentBtn").click(function() {
 	const url = new URL(window.location.href);
-		const no = url.searchParams;
+	const no = url.searchParams;
+	if(confirm("등록하시겠습니까??")){
 		$("#commentForm").attr("action", "${root}/comment_write?no="+no.get('no')).submit();
+	}
 	})
 });
 
@@ -56,9 +58,9 @@ $(function(){
 		const url = new URL(window.location.href);
 		const urlPa = url.searchParams;
 		var no =urlPa.get('no')
-		
+		if(confirm("삭제하시겠습니까??")){
 		location.href = 'comment_delete?no='+no+'&comment_num='+comment_num;
-		
+		}
 	});
 });
 
@@ -85,8 +87,9 @@ $(function(){
 		//console.log(comment_num)
 		//console.log(content);
 		
+		if(confirm("수정하시겠습니까??")){
 		location.href = 'comment_update?no='+no+'&comment_num='+comment_num+'&content='+content;
-		
+		}
 	});
 });
 
@@ -144,14 +147,13 @@ $(function(){
 		var no =urlPa.get('no');
 		
 		
-		location.href = "declaration?no="+no;
+		if(confirm("신고하시겠습니까??")){
+			location.href = "declaration?no="+no;
+		}
+		
+		
 	})
 })
-
-
-
-
-
 
 </script>
 
@@ -202,7 +204,7 @@ $(function(){
 
 	<form action="comment_write" method="post" id = "commentForm">
 		<textarea rows="" cols="" name="content"></textarea>
-		<input id = "commentBtn" type="submit" value="등록">
+		<button id = "commentBtn" type="button">등록</button>
 	</form>
 	
 	<c:set var="session" value="${sessionScope.user}"></c:set>

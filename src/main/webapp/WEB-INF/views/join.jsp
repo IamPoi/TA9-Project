@@ -92,6 +92,17 @@ $("#userpw").keyup(function(e) {
 		});
 
 	});
+	
+	
+	$(document).ready(function() {
+		$("#joinBtn").click(function() {
+		if(confirm("가입하시겠습니까??")){
+			$('#joinform').submit();
+			}
+		})
+	});
+	
+	
 </script>
 
 </head>

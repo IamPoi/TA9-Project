@@ -124,6 +124,20 @@ function login(){
 }
 
 
+$(function(){
+	$("#logout").on('click',function(){
+		
+		if(confirm("로그아웃하시겠습니까??")){
+			location.href = "/logout";
+		}
+		
+		
+	})
+})
+
+
+
+
 </script>
 </head>
 
@@ -131,7 +145,7 @@ function login(){
 
 	<nav class="navbar">
 		<div class="navbar__logo" style = "padding-left : 3%;">
-			<i class="fab fa-amazon"><link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg"></i> <a href="/">지금 우리 동네는</a>
+			<i class="fab fa-amazon"><link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg"></i><a href="/">지금 우리 동네는</a>
 		</div>
 		<ul class="navbar__menu" style ="padding-right: 3%; padding-top: 1%;">
 			
@@ -151,7 +165,7 @@ function login(){
 			<li><a href="${root}/post">게시판</a></li>
 			<li><a href="${root}/mypage">마이페이지</a></li>
 			<li><a href="${root}/rankView">랭킹</a></li>
-			<li><a href="${root}/logout">로그아웃</a></li>
+			<li><a id = "logout" style = "color:white;">로그아웃</a></li>
 			<!-- <li><a href="http://localhost:8088/pandora3/bo">판도라ㄱㄱ</a></li> -->
 			
 			<%} %>

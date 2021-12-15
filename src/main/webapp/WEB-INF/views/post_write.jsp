@@ -9,8 +9,16 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
 <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
 
-
+<script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+
+$(document).ready(function() {
+	$("#button").click(function() {
+	if(confirm("등록하시겠습니까??")){
+		$('#form').submit();
+		}
+	})
+});
 
 
 </script>
@@ -20,6 +28,7 @@
 .ck-content{
 	height: 300px;
 } 
+
 
 
 
@@ -35,11 +44,11 @@
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 <br>
 <div align="center"  style="width: 85%; padding-left: 15%;">
-	<form action="${root}/post_enrollment" method="post" enctype="multipart/form-data">
+	<form action="${root}/post_enrollment" method="post" enctype="multipart/form-data" id = "form">
 		제목 <input type="text" id = "title" name="title" style=""><br><br>
 		<textarea style = "height:500px" name="content" id="content_textarea"></textarea>
 		<input type="file" name="img_name" multiple="multiple"/><br>
-		<input type="submit" id = "button" value="글 등록" id="submit-btn" onclick="getData()">
+		<input type="button" id = "button" value="글 등록" id="submit-btn" onclick="getData()">
 	</form>
 	
 </div>
