@@ -61,9 +61,21 @@ public class JoinController {
 			String road = (String) map.get("road");
 
 			String list[] = road.split(" ");
-
-			String doName = list[0];
-			String gooName = list[1];
+			
+			String doName = "%";
+			String gooName = "%";
+			String gooName2 = "%";
+			
+			System.out.println(list.length);
+			
+			if (list.length == 4) {
+			doName = list[0];
+			gooName = list[1];
+			} else {
+				doName = list[0];
+				gooName = list[1];
+				gooName2 = list[2];
+			}
 
 			if (doName.equals("전남")) {
 				doName = "전라남도";
@@ -77,19 +89,38 @@ public class JoinController {
 				doName = "충청북도";
 			} else if (doName.equals("충남")) {
 				doName = "충청남도";
+			} else if (doName.equals("광주")) {
+				doName = "광주광역시";
+			} else if (doName.equals("인천")) {
+				doName = "인천광역시";
+			} else if (doName.equals("부산")) {
+				doName = "부산광역시";
+			} else if (doName.equals("대전")) {
+				doName = "대전광역시";
+			} else if (doName.equals("대구")) {
+				doName = "대구광역시";
+			} else if (doName.equals("울산")) {
+				doName = "울산광역시";
 			}
+			
+			
 
 			String want_list[] = dong_apt.split(",");
 
-			System.out.println(want_list);
+			System.out.println(want_list.toString());
 
 			String dong = want_list[0];
 			String apt = want_list[1];
+			
+			apt = apt.replace(dong, "");
 
 			map.put("dong", dong);
 			map.put("apt", apt);
 			map.put("doName", doName);
 			map.put("gooName", gooName);
+			map.put("gooName2", gooName2);
+			
+			System.out.println("want = "+ doName + gooName + gooName2 + dong);
 
 			SHA256 sha256 = new SHA256();
 

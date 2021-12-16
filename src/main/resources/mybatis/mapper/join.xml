@@ -8,7 +8,7 @@
 			values(#{userid},#{userpw},#{username},
 				(select dong_num 
 				from location 
-				where dong like concat('%',#{dong},'%') and (dong like concat('%',#{gooName},'%') and dong like concat('%',#{doName},'%')))
-		,#{apt},1)
+				where dong like 
+				concat('%', #{doName}, '%', #{gooName}, '%', #{gooName2}, '%', #{dong}, '%')), #{apt}, 1)
 	</insert>
 </mapper>

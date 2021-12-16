@@ -61,7 +61,7 @@ public class UserController {
 			if (user != null) {
 				session.setAttribute("user", user);
 			}
-
+			
 			Long dong_num = user.getDong_num();
 
 			LocationDTO locationDTO = uls.userLocation(dong_num);

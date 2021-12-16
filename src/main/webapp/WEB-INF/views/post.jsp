@@ -64,8 +64,9 @@ $(function(){
 		
 		var no = td.eq(0).text();
 		
+		if(confirm("수정하시겠습니까??")){
 		location.href ='post_update?no='+no;
-		
+		}
 	});
 });
 
@@ -80,9 +81,9 @@ $(function(){
 		var td = tr.children();
 		
 		var no = td.eq(0).text();
-		
+		if(confirm("삭제하시겠습니까??")){
 		location.href ='post_delete?no='+no;
-		
+		}
 	});
 });
 

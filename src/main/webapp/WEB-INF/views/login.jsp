@@ -20,7 +20,15 @@
 
 
 <script type="text/javascript">
+
+
+
+
+
 $(document).ready(function() {
+
+	
+
 	$("#loginBtn").click(function() {
 		if($("#userid").val() == "") {
 			alert("아이디 입력!!!");
@@ -32,6 +40,8 @@ $(document).ready(function() {
 			$("#loginform").attr("action", "${root}/login").submit();
 		}
 	});
+	
+	
 	
 });
 </script>
