@@ -156,6 +156,7 @@ $(function(){
 			<li><a href="${root}/login_page" onclick="login()">게시판</a></li>
 			<li><a href="${root}/login_page" onclick="login()">마이페이지</a></li>
 			<li><a href="${root}/login_page" onclick="login()">랭킹</a></li>
+			<li><a href="${root}/login_page" onclick="login()">아파트 조회</a></li>
 			<li><a href="${root}/join_page">회원가입</a></li>
 			<li><a href="${root}/login_page">로그인</a></li>
 			
@@ -165,6 +166,7 @@ $(function(){
 			<li><a href="${root}/post">게시판</a></li>
 			<li><a href="${root}/mypage">마이페이지</a></li>
 			<li><a href="${root}/rankView">랭킹</a></li>
+			<li><a href="${root}/apt_search_page">아파트 조회</a></li>
 			<li><a id = "logout" style = "color:white;">로그아웃</a></li>
 			<!-- <li><a href="http://localhost:8088/pandora3/bo">판도라ㄱㄱ</a></li> -->
 			

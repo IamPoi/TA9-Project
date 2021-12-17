@@ -37,7 +37,6 @@
 		${post.post_num}
 		제목 <input type="text" name="title" value="${post.title}"><br><br>
 		<textarea style = "height:500px" name="content" id="content_textarea">${post.content}</textarea>
-		<button id = "testButton">dd</button>
 		<input type="submit" value="글 수정" id="submit-btn">
 		
 	</form>

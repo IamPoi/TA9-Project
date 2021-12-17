@@ -1,3 +1,4 @@
+<%@page import="com.example.demo.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,8 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>지금 우리 동네는</title>
-<link rel="shortcut icon" type="image/x-icon"
-	href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -18,135 +18,51 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+<body>
 
+<%@ include file = "/WEB-INF/views/menu.jsp" %>
+
+
+<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		
 <script type="text/javascript">
 
 
-
-$("#userpw").keyup(function(e) {
-    console.log("키업!");
-	var content = $(this).val();
-	$("#pw_length").text("(" + content.length + "/ 200)"); //실시간 글자수 카운팅
-	if (content.length > 200) {
-		Alert("최대 200자까지 입력 가능합니다.");
-		$(this).val(content.substring(0, 200));
-		$('#textLengthCheck').html("(200 / 최대 200자)");
-	}
-});
-
-
-
-
-
 	$(document).ready(function() {
-		$("#joinBtn").click(function() {
-			if ($("#userid").val() == "") {
-				alert("아이디 입력!!!");
-				return;
-			} else if ($("#userpw").val() == "") {
-				alert("비밀번호 입력!!!");
-				return;
-			} else if ($("#username").val() == "") {
-				alert("이름 입력!!!");
-				return;
-			} else {
-				if ($('#pwCheck').val() == $('#userpw').val()) {
-					if(confirm("가입하시겠습니까??")){
-						$("#joinform").attr("action", "${root}/join").submit();
-					}
-				} else {
-					alert("비밀번호를 확인 해주세요")
-					$('#pwCheck').val('');
-				}
-			}
-		});
+		$("#search").click(function() {
 
+			$("#searchForm").attr("action", "${root}/apt_search").submit();
+
+		})
 	});
-
-	$(document).ready(function() {
-		$("#checkBtn").click(function() {
-			$.ajax({
-				url : "/idCheck",
-				type : "post",
-				dataType : "json",
-				data : {
-					"id" : $("#userid").val()
-				},
-				success : function(data) {
-					if ($("#userid").val() == "") {
-						alert("아이디 입력!!!");
-						return;
-					} else {
-
-						if (data == 1) {
-							alert("중복된 아이디");
-							$("#userid").val('');
-						} else if (data == 0) {
-							alert("사용 가능");
-							$("#joinBtn").attr("disabled", false);
-						}
-
-					}
-
-				}
-			})
-
-		});
-
-	});
-	
-	
 	
 </script>
 
-</head>
-<body>
-	<%@ include file="/WEB-INF/views/menu.jsp"%>
-	<br>
-
-
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-	<div class="container" align="center">
+<div class="container" align="center">
 
 		<div class="col-lg-6" align="center">
-			<form id="joinform" method="post" action="">
-				<div class="form-group" align="left">
-					<label for="">아이디</label> <input type="text" class="form-control"
-						id="userid" name="userid" placeholder=""
-						onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
-					<button class="btn btn-warning" id="checkBtn" type="button">중복체크</button>
-				</div>
-				<div class="form-group" align="left">
-					<label for="">비밀번호</label> <input type="password"
-						class="form-control" id="userpw" name="userpw" maxlength="12" minlength="6">
-					<span id = "pw_length">..</span>
-				</div>
-				<div class="form-group" align="left">
-					<label for="">비밀번호 체크</label> <input type="password"
-						class="form-control" id="pwCheck" name="pwCheck" maxlength="12">
-				</div>
-				<div class="form-group" align="left">
-					<label for="">이름</label> <input type="text" class="form-control"
-						id="username" name="username" placeholder="">
-				</div>
-				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
+			<form id="searchForm" method="get">
+				<br>
+				<input type="button" onclick="execDaumPostcode()" value="검색">
 				<input type="text" id="postcode" class="form-control"
 					placeholder="우편번호"><br> <input type="text"
 					id="address" class="form-control" placeholder="주소" name="road"><br>
 				<input type="text" id="extraAddress" class="form-control"
 					placeholder="참고항목" name="dong_apt">
 				<div class="form-group" align="center">
-					<button type="button" id="joinBtn" class="btn btn-warning"
-						disabled="disabled">회원가입</button>
+					<button type="button" id="search" class="btn btn-warning">조회</button>
 				</div>
 			</form>
 
 		</div>
 	</div>
 
-	<script>
+
+
+
+<script>
 	 function execDaumPostcode() {
 	        new daum.Postcode({
 	            oncomplete: function(data) {
@@ -190,6 +106,8 @@ $("#userpw").keyup(function(e) {
 	    }
     
 </script>
+
+
 
 </body>
 </html>
