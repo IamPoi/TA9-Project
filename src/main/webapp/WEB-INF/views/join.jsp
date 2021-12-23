@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -7,17 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>지금 우리 동네는</title>
-<link rel="shortcut icon" type="image/x-icon"
-	href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 
@@ -105,41 +99,46 @@ $("#userpw").keyup(function(e) {
 	<br>
 
 
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 	<div class="container" align="center">
 
 		<div class="col-lg-6" align="center">
 			<form id="joinform" method="post" action="">
-				<div class="form-group" align="left">
-					<label for="">아이디</label> <input type="text" class="form-control"
-						id="userid" name="userid" placeholder=""
-						onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
+				<!-- <div class="form-group" align="left"> -->
+				<div align="left">
+					<label for="">아이디</label>
+				</div>
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" id="userid" name="userid" placeholder="" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
 					<button class="btn btn-warning" id="checkBtn" type="button">중복체크</button>
 				</div>
+
 				<div class="form-group" align="left">
-					<label for="">비밀번호</label> <input type="password"
-						class="form-control" id="userpw" name="userpw" maxlength="12" minlength="6">
-					<span id = "pw_length">..</span>
+					<label for="">비밀번호</label> 
+					<input type="password" class="form-control" id="userpw" name="userpw" maxlength="12" minlength="6">
 				</div>
 				<div class="form-group" align="left">
-					<label for="">비밀번호 체크</label> <input type="password"
-						class="form-control" id="pwCheck" name="pwCheck" maxlength="12">
+					<label for="">비밀번호 체크</label> 
+					<input type="password" class="form-control" id="pwCheck" name="pwCheck" maxlength="12">
 				</div>
 				<div class="form-group" align="left">
-					<label for="">이름</label> <input type="text" class="form-control"
-						id="username" name="username" placeholder="">
+					<label for="">이름</label> 
+					<input type="text" class="form-control" id="username" name="username" placeholder="">
 				</div>
-				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-				<input type="text" id="postcode" class="form-control"
-					placeholder="우편번호"><br> <input type="text"
-					id="address" class="form-control" placeholder="주소" name="road"><br>
-				<input type="text" id="extraAddress" class="form-control"
-					placeholder="참고항목" name="dong_apt">
+				<div align="left">
+					<label for="">주소</label>
+				</div>
+				<div class="input-group mb-3">
+					<input type="text" id="postcode" class="form-control" placeholder="우편번호" readonly="readonly">
+					<button type="button" onclick="execDaumPostcode()" class="btn btn-success">주소검색</button>
+				</div>
+				<input type="text" id="address" class="form-control" placeholder="주소" name="road" readonly="readonly">
+				<br>
+				<input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name="dong_apt" readonly="readonly">
+				<br>
 				<div class="form-group" align="center">
-					<button type="button" id="joinBtn" class="btn btn-warning"
-						disabled="disabled">회원가입</button>
+					<button type="button" id="joinBtn" class="btn btn-warning" disabled="disabled">회원가입</button>
 				</div>
 			</form>
 

@@ -1,9 +1,8 @@
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="com.example.demo.model.UserDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -13,41 +12,38 @@
 <title>지금 우리 동네는</title>
 <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-	
-<script type="text/javascript">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-$(function() {
-	$("#example-table-1 tbody").on("click","tr",function(){
-		var str = ""
-		var tdArr = new Array();	// 배열 선언
-		
-		// 현재 클릭된 Row(<tr>)
-		var tr = $(this);
-		var td = tr.children();
-		
-		// 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
-		td.each(function(i){
-			tdArr.push(td.eq(i).text());
+
+
+<script type="text/javascript">
+	$(function() {
+		$("#example-table-1 tbody").on("click", "tr", function() {
+			var str = ""
+			var tdArr = new Array(); // 배열 선언
+
+			// 현재 클릭된 Row(<tr>)
+			var tr = $(this);
+			var td = tr.children();
+
+			// 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
+			td.each(function(i) {
+				tdArr.push(td.eq(i).text());
+			});
+
+			// td.eq(index)를 통해 값을 가져올 수도 있다.
+			var no = td.eq(0).text();
+
+			str += "No." + no;
+			console.log(no)
+
+			location.href = 'post_detail?no=' + no;
+
 		});
-		
-		// td.eq(index)를 통해 값을 가져올 수도 있다.
-		var no = td.eq(0).text();
-		
-		str +=	"No." + no;
-		console.log(no)
-		
-		location.href = 'post_detail?no='+no;
-		
 	});
-});
 </script>
 
 </head>
@@ -55,74 +51,83 @@ $(function() {
 
 
 
-<%@ include file = "/WEB-INF/views/menu.jsp" %>
+	<%@ include file="/WEB-INF/views/menu.jsp"%>
+	<br>
+	<br>
 
-<%UserDTO dto = (UserDTO)session.getAttribute("user"); %>
+	<%
+	UserDTO dto = (UserDTO) session.getAttribute("user");
+	%>
 
-<div style = "padding-left: 10%; width: 90%;">
-<h1><%=dto.getName() %>의 마이 페이지</h1>
+	<div style="padding-left: 10%; width: 90%;">
+		<h1 align="center"><%=dto.getName()%>의 마이 페이지
+		</h1>
 
-
-<h2><%=dto.getApt() %></h2>
-
-<%-- ${list_length} --%>
-
-<c:if test="${list_length !=  0}">
-	<c:forEach items="${aptInfo}" var = "aptInfo">
-		<span><strong>${aptInfo.year} : <%-- ${aptInfo.min_price/10000}억 ~  --%>${aptInfo.max_price/10000}억</strong></span><br>
-	</c:forEach>
-</c:if>
-
-<c:if test="${list_length ==  0}">
-	<span> <strong>준비중....</strong></span>
-</c:if>
+		<br>
 
 
+		<div align="right">
+
+			<h2><%=dto.getApt()%></h2>
+			<c:if test="${list_length !=  0}">
+				<c:forEach items="${aptInfo}" var="aptInfo">
+
+					<span><strong>${aptInfo.year} : <%-- ${aptInfo.min_price/10000}억 ~  --%>${aptInfo.max_price/10000}억</strong></span>
+					<br>
+				</c:forEach>
+			</c:if>
+
+			<c:if test="${list_length ==  0}">
+				<span> <strong>준비중인 아파트 입니다....</strong></span>
+			</c:if>
+		</div>
+		<br>
 
 
 
-<h1>내가 쓴 게시글</h1>
-<table class="table table-bordered table-hover text-center" id = "example-table-1">
-<thead>
-	<tr>	
-		<td>게시글 번호</td>
-		<td>게시글 제목</td>
-		<!-- <td>게시글 작성자</td> -->
-		<td>신고 수</td>
-	</tr>
-</thead>
-	<tbody>
-	<c:forEach items="${myPostList}" var = "my_post">
-		<tr>
-			<td>${my_post.post_num}</td>
-			<td>${my_post.title}</td>
-			<%-- <td>${my_post.writer_id}</td> --%>
-			<td>${my_post.declaration}</td>
-		</tr>
-	</c:forEach>
-	</tbody>
-	
-</table>
+		<h1>내가 쓴 게시글</h1>
+		<table class="table table-striped table-hover text-center" id="example-table-1">
+			<thead>
+				<tr>
+					<td>게시글 번호</td>
+					<td>게시글 제목</td>
+					<!-- <td>게시글 작성자</td> -->
+					<td>신고 수</td>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${myPostList}" var="my_post">
+					<tr>
+						<td>${my_post.post_num}</td>
+						<td>${my_post.title}</td>
+						<%-- <td>${my_post.writer_id}</td> --%>
+						<td>${my_post.declaration}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
 
-<h1>내가 쓴 댓글</h1>
+		</table>
+		<br>
+		<h1>내가 쓴 댓글</h1>
 
-<table class="table table-bordered table-hover text-center">
-	<tr>	
-		<td>댓글 번호</td>
-		<td>댓글 내용</td>
-		<!-- <td>댓글 작성자</td> -->
-	</tr>
-	<c:forEach items="${myCommentList}" var = "my_comment">
-		<tr>
-			<td>${my_comment.comment_num}</td>
-			<td>${my_comment.content}</td>
-			<%-- <td>${my_comment.comment_writer}</td> --%>
-		</tr>
-	</c:forEach>
-	
-</table>
+		<table class="table table-striped table-hover text-center">
+			<tr>
+				<td>댓글 번호</td>
+				<td>댓글 내용</td>
+				<!-- <td>댓글 작성자</td> -->
+			</tr>
+			<c:forEach items="${myCommentList}" var="my_comment">
+				<tr>
+					<td>${my_comment.comment_num}</td>
+					<td>${my_comment.content}</td>
+					<%-- <td>${my_comment.comment_writer}</td> --%>
+				</tr>
+			</c:forEach>
+
+		</table>
 
 
-</div>
+	</div>
+	<br>
 </body>
 </html>

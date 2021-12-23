@@ -165,7 +165,12 @@ $(function(){
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 
+
+
 <div style="width: 85%;padding-left: 15%; ">
+
+
+
 <br>
 <h1>${sessionScope.user_location.dong} ${apt_detail.apt}</h1>
 <div align="right">
@@ -174,7 +179,11 @@ $(function(){
 <strong>평균 : ${apt_detail.avg_price}</strong>
 </div>
 
+
+
 <div id="map" style="width:100%;height:400px;"></div>
+
+
 
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=94i46pyx3o&submodules=geocoder"></script>
 <script type="text/javascript">

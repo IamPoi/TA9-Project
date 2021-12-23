@@ -32,6 +32,8 @@
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
 
 <div style="width: 85%;padding-left: 15%; ">
+
+<h1>${MSG}</h1>
 <br>
 <h1> ${apt_detail.apt}</h1>
 <div align="right">

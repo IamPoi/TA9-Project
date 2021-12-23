@@ -54,7 +54,7 @@ public class UserController {
 			UserDTO user = us.login(map);
 
 			if (user.getActivation() == 0) {
-				model.addAttribute("msg", "아이디가 비활성화 상태입니다. 관리자에게 문의해주세요");
+				model.addAttribute("msg", "아이디가 비활성화 상태입니다. 관리자에게 문의해주세요. <br> changyoon.park@ta9.co.kr");
 				return "error";
 			}
 

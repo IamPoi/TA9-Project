@@ -26,8 +26,8 @@
 
 <br>
 <div style = "width : 85%;padding-left: 15%;">
-<strong>${location.dong}의 아파트 순위</strong>
-<table id="example-table-1" class="table table-bordered table-hover text-center">
+<h2>${location.dong}의 아파트 순위</h2>
+<table id="example-table-1" class="table table-striped table-hover text-center">
 	<thead>
 		<tr>
 			<th>No.</th>

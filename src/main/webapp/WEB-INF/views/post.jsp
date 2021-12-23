@@ -95,31 +95,34 @@ $(function(){
 <body>
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
-<br><div class="row" style = "padding-left: 15%; width: 85%;" >
-	<div class = "center">${sessionScope.user_location.dong} 게시판</div>
+<br>
+<div class="row" style = "padding-left: 15%; width: 85%; display:inline-block" >
+	<div class = "center" align="center"><h2>${sessionScope.user_location.dong} 게시판</h2></div>
 	
-		<form action="post_search" method="get" >
-			<input type="text" placeholder="검색 할 내용" name = "search">
-			<input type="submit" value="검색">
+		<form action="post_search" method="get">
+		<div align="center">
+			<input type="text" placeholder="검색 할 내용" name = "search" style ='width: 20rem;'>
+			<button class = "btn btn-success" type="submit">Search</button>
+		</div>
 		</form>
 	</div>
 	
 <c:if test="${fn:length(post_list) == 0}">
-	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto;">
+	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto; display:inline-block">
 	<h1 align="center">${sessionScope.user_location.dong} 게시판에 <br>첫번째 게시글을 등록해주세요.</h1>
 </c:if>
 
-<c:if test="${fn:length(post_list) < 5}">
-	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto;">
+<c:if test="${fn:length(post_list) < 8}">
+	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto; display:inline-block">
 </c:if>
-<c:if test="${fn:length(post_list) >= 5}">
-	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto; height: 500px;">
+<c:if test="${fn:length(post_list) >= 8}">
+	<div class="row" style = "padding-left: 15%; width: 85%; overflow: auto; height: 500px; display:inline-block">
 </c:if>
 	
 	
-	<a href="post_write" id = "post-write" class = "right" style = "color: black">글쓰기</a>
+	<a href="post_write" id = "post-write" class = "btn btn-info" style = "color: #DCFFDC; float:right;">글쓰기</a>
 
-	<table id="example-table-1" style = "width : 100%;" class="table table-bordered table-hover text-center">
+	<table id="example-table-1" style = "width : 100%;" class="table table-striped table-hover text-center">
 	<thead>
 		<tr>
 			<th>No.</th>
@@ -134,15 +137,7 @@ $(function(){
 				<td>${post.post_num}</td>
 				<td><a  style = "color : black" href="post_detail?no=${post.post_num}">${post.title}</a></td>
 				<c:set var = "id" value="<%=dto.getId()%>"></c:set>
-				<c:choose>
-					<c:when test="${post.writer_id == id}">
-						<td>${post.writer_id}<button class = "updateBtn">수정</button><button class = "deleteBtn">삭제</button></td>
-					</c:when>
-					<c:otherwise>
-						<td>${post.writer_id}<button style="visibility: hidden;">수정</button><button style="visibility: hidden;">수정</button></td>
-					</c:otherwise>
-				
-				</c:choose>
+						<td>${post.writer_id}</td>
 				
 			</tr>
 		</c:forEach>

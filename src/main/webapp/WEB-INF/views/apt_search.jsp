@@ -1,6 +1,5 @@
 <%@page import="com.example.demo.model.UserDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -10,48 +9,41 @@
 <title>지금 우리 동네는</title>
 <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<%@ include file = "/WEB-INF/views/menu.jsp" %>
+	<%@ include file="/WEB-INF/views/menu.jsp"%>
 
 
-<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		
-<script type="text/javascript">
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+	<script type="text/javascript">
 
 
 	$(document).ready(function() {
 		$("#search").click(function() {
-
-			$("#searchForm").attr("action", "${root}/apt_search").submit();
-
+			if ($("#postcode").val() == "" || $("#address").val() =="" || $("#extraAddress").val() == "") {
+				alert("주소검색하시길 바랍니다.");
+			}else{
+				$("#searchForm").attr("action", "${root}/apt_search").submit();
+			}
 		})
+		
 	});
 	
 </script>
 
-<div class="container" align="center">
+	<div class="container" align="center">
 
 		<div class="col-lg-6" align="center">
 			<form id="searchForm" method="get">
-				<br>
-				<input type="button" onclick="execDaumPostcode()" value="검색">
-				<input type="text" id="postcode" class="form-control"
-					placeholder="우편번호"><br> <input type="text"
-					id="address" class="form-control" placeholder="주소" name="road"><br>
-				<input type="text" id="extraAddress" class="form-control"
-					placeholder="참고항목" name="dong_apt">
+				<br> <input type="text" id="postcode" class="form-control" placeholder="우편번호" readonly="readonly"><br> <input type="text" id="address" class="form-control" placeholder="주소" name="road" readonly="readonly"><br> <input type="text" id="extraAddress" class="form-control" placeholder="참고항목" name="dong_apt" readonly="readonly"><br>
 				<div class="form-group" align="center">
+					<input type="button" class="btn btn-warning" onclick="execDaumPostcode()" value="주소 검색">
 					<button type="button" id="search" class="btn btn-warning">조회</button>
 				</div>
 			</form>
@@ -62,7 +54,7 @@
 
 
 
-<script>
+	<script>
 	 function execDaumPostcode() {
 	        new daum.Postcode({
 	            oncomplete: function(data) {

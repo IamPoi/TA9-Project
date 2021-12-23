@@ -26,6 +26,7 @@ public class AptDetailController {
 			System.out.println(ads.aptDetailView(map));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

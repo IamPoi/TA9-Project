@@ -70,6 +70,10 @@ public class AptSearchController {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			
+			model.addAttribute("MSG","준비중인 아파트 입니다....");
+			System.out.println("아파트 검색 실패");
+			
 			e.printStackTrace();
 		}
 		

@@ -27,12 +27,12 @@
 <body>
 
 <%@ include file = "/WEB-INF/views/menu.jsp" %>
-
-
+<br>
+<h1 style = 'padding-left: 5%;' align="center">
 <c:if test="${msg!=null}">
 	<strong>${msg}</strong>
 </c:if>
-
+</h1>
 
 
 </body>
